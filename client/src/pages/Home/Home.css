@@ -1,0 +1,33 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.how-it-works-link {
+  margin-top: 6rem;
+}
+
+.how-it-works-link a {
+  text-decoration: none;
+  color: var(--dark-green-color);
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.how-it-works-link a:hover {
+  text-decoration-line: underline;
+}
+
+@media screen and (max-width: 850px) {
+  .how-it-works-link a {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .how-it-works-link {
+    margin-top: 3rem;
+  }
+}

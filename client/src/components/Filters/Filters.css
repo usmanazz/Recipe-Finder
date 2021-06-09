@@ -1,0 +1,237 @@
+.Filters {
+  font-family: var(--segoeUI-font);
+  display: flex;
+  margin-top: 3rem;
+  background-color: #ffffff;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.filters-label {
+  font-size: 1rem;
+  font-family: var(--segoeUI-font);
+  font-weight: bold;
+  margin-right: 3rem;
+  margin-left: 1.5rem;
+}
+
+.button.filter-and-sort-btn {
+  display: none;
+}
+
+.button.alpha-order-btn {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  padding: 0.8rem 0.5rem;
+}
+
+.filter-btn-styles-pre {
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background-color: #ffffff;
+  font-weight: normal;
+}
+
+.filter-btn-styles-post {
+  border-top: 1px solid rgb(231, 231, 231);
+  border-right: 1px solid rgb(231, 231, 231);
+  border-left: 1px solid rgb(231, 231, 231);
+  border-bottom: 1px solid rgb(245, 245, 245);
+  border-radius: 5px 5px 0 0;
+  background-color: rgb(245, 245, 245);
+  font-weight: bold;
+}
+
+.button.alpha-order-btn:hover {
+  background-color: rgb(245, 245, 245);
+  cursor: pointer;
+}
+
+.button.alpha-order-btn img {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.alphabetic-order-filters {
+  display: none;
+  position: absolute;
+  background-color: rgb(245, 245, 245);
+  width: 100%;
+  padding: 1.8rem;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 0 5px 5px 5px;
+}
+
+.button.cook-time-btn {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  padding: 0.8rem 0.5rem;
+}
+
+.button.cook-time-btn:hover {
+  background-color: rgb(245, 245, 245);
+  cursor: pointer;
+}
+
+.button.cook-time-btn img {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.cook-time-filters {
+  display: none;
+  position: absolute;
+  background-color: rgb(245, 245, 245);
+  width: 100%;
+  padding: 1rem 2rem;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 0 5px 5px 5px;
+}
+
+.button.num-ingredients-btn {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  padding: 0.8rem 0.5rem;
+}
+
+.button.num-ingredients-btn:hover {
+  background-color: rgb(245, 245, 245);
+  cursor: pointer;
+}
+
+.button.num-ingredients-btn img {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.num-ingredients-filters {
+  display: none;
+  position: absolute;
+  background-color: rgb(245, 245, 245);
+  width: 100%;
+  padding: 1rem 2rem;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 0 5px 5px 5px;
+}
+
+.button.calories-btn {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  padding: 0.8rem 0.5rem;
+}
+
+.button.calories-btn:hover {
+  background-color: rgb(245, 245, 245);
+  cursor: pointer;
+}
+
+.button.calories-btn img {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.calories-filters {
+  display: none;
+  position: absolute;
+  background-color: rgb(245, 245, 245);
+  width: 100%;
+  padding: 1rem 2rem;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 0 5px 5px 5px;
+}
+
+.display-filters {
+  display: flex;
+}
+
+.radio {
+  display: block;
+  position: relative;
+  padding-left: 1.8rem;
+  padding-right: 3rem;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.2rem;
+  width: 1.2rem;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio .checkmark:after {
+  top: 0.1rem;
+  left: 0.1rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: black;
+}
+
+@media screen and (max-width: 1024px) {
+  .Filters {
+    border-bottom: 1px solid rgb(231, 231, 231);
+  }
+
+  .filters-label {
+    display: none;
+  }
+
+  .button.filter-and-sort-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--segoeUI-font);
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: none;
+    background-color: #ffffff;
+    margin-left: 1.5rem;
+    padding: 0;
+  }
+
+  .button.filter-and-sort-btn img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .filter-styles {
+    display: none;
+  }
+}

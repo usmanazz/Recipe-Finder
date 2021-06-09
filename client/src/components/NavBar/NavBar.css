@@ -1,0 +1,217 @@
+.resize-animation-stopper * {
+  animation: none !important;
+  transition: none !important;
+}
+
+.nav-container {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  width: 100%;
+  top: 2rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 0.75rem 0;
+  z-index: 100;
+}
+
+/* Website title */
+.nav-title-container h1 {
+  font-family: "Rock Salt", cursive;
+  font-size: 2.5rem;
+  margin-left: 3rem;
+}
+
+/* navbar links */
+.links {
+  position: relative;
+  top: 0.2rem;
+}
+
+.links a,
+.links .button {
+  margin-right: 3rem;
+}
+
+.links a {
+  text-decoration: none;
+  color: var(--dark-green-color);
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.button.nav-btn-1 {
+  background: #ffffff;
+  color: var(--green-color);
+  border: 1px solid var(--green-color);
+  box-sizing: border-box;
+  border-radius: 6px;
+  width: 6rem;
+  height: 1.75rem;
+  cursor: pointer;
+}
+
+.button.nav-btn-1:hover {
+  background-color: var(--green-color);
+  color: #ffffff;
+}
+
+.button.nav-btn-1:active {
+  background-color: #757554;
+}
+
+.button.nav-btn-2 {
+  background: var(--green-color);
+  color: #ffffff;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 6px;
+  width: 6rem;
+  height: 1.75rem;
+  cursor: pointer;
+}
+
+.button.nav-btn-2:hover {
+  background-color: var(--green-color-hover);
+}
+
+.button.nav-btn-2:active {
+  background-color: var(--green-color-active);
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* Burger nav button */
+.burger {
+  display: none;
+}
+
+.burger div {
+  background-color: black;
+  height: 0.1775rem;
+  width: 1.2rem;
+  margin: 0.2rem;
+  transition: all 0.3s ease;
+}
+
+/* Account Icon */
+.account-icon {
+  display: none;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+  .nav-title-container h1 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .nav-title-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .links a,
+  .links .button {
+    font-size: 0.7rem;
+  }
+
+  .button.nav-btn-1,
+  .button.nav-btn-2 {
+    width: 5rem;
+    height: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .nav-container {
+    top: 0;
+    justify-content: center;
+  }
+
+  .nav-title-container h1 {
+    margin-left: 0;
+  }
+
+  .links {
+    position: absolute;
+    left: 0;
+    height: 100vh;
+    top: 3rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in 0s;
+    z-index: 100;
+  }
+
+  .nav-active {
+    transform: translateX(0);
+  }
+
+  .links a {
+    font-size: 0.8rem;
+    margin: 2rem 0;
+    opacity: 0;
+  }
+
+  .button.button.nav-btn-1,
+  .button.nav-btn-2 {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .burger {
+    position: absolute;
+    left: 1.5rem;
+    display: block;
+    cursor: pointer;
+  }
+
+  .account-icon {
+    display: block;
+    position: absolute;
+    right: 1.3rem;
+  }
+
+  .account-icon a img {
+    height: 1.7rem;
+    width: 1.7rem;
+  }
+
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+
+  .toggle .line1 {
+    transform: rotate(-45deg) translate(-4px, 4px);
+  }
+  .toggle .line2 {
+    opacity: 0;
+  }
+  .toggle .line3 {
+    transform: rotate(45deg) translate(-4px, -4px);
+  }
+}

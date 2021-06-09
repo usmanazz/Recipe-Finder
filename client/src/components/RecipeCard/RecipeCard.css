@@ -1,0 +1,28 @@
+.recipecard-image {
+  height: 17rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.recipecard-content {
+  padding: 1rem 0.6rem;
+}
+
+.recipecard-title {
+  font-family: var(--segoeUI-font);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.recipecard-ingredients {
+  margin-bottom: 0.6rem;
+}
+
+.recipecard-ingredients,
+.recipecard-cooktime {
+  font-size: 0.9rem;
+}

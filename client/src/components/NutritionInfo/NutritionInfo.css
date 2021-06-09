@@ -1,0 +1,83 @@
+.NutritionInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 11rem;
+  margin-top: 1.5rem;
+}
+
+.nutrition-title {
+  font-family: var(--segoeUI-font);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.button.view-info-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6.2rem;
+  height: 2.2rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--green-color);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.button.view-info-btn:hover {
+  background-color: var(--green-color-hover);
+}
+
+.button.view-info-btn:active {
+  background-color: var(--green-color-active);
+}
+
+.nutrition-details {
+  display: none;
+  margin-top: 1rem;
+}
+
+.nutrition-details p {
+  margin-bottom: 0.7rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.nutrition-disclaimer {
+  font-size: 0.5rem;
+  font-weight: 600;
+  line-height: 0.8rem;
+}
+
+@media screen and (max-width: 1050px) {
+  .NutritionInfo {
+    margin-right: 7rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .NutritionInfo {
+    margin-right: 5rem;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .NutritionInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 11rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .NutritionInfo {
+    font-size: 1.2rem;
+  }
+}

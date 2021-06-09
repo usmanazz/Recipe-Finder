@@ -1,0 +1,64 @@
+:root {
+  --green-color: #abac7f;
+  --green-color-hover: hsl(61, 21%, 45%);
+  --green-color-active: #636348;
+
+  --dark-green-color: #373d20;
+  --dark-green-color-hover: #252916;
+  --dark-green-color-active: #0f1109;
+
+  --montserrat-font: "Montserrat", sans-serif;
+  --segoeUI-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: var(--montserrat-font);
+}
+
+html {
+  font-size: 16px;
+  background-image: url("./Seamless_icon_pattern_supermarket_opac13.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3.75rem;
+}
+
+.App {
+  padding-bottom: 3.75rem;
+  font-family: var(--montserrat-font);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3.75rem;
+  line-height: 3.75rem;
+}
+
+.footer h3 {
+  text-align: center;
+}
+
+/* might need to uncomment this again */
+
+/* @media only screen and (max-width: 768px) {
+  html {
+    background-size: initial;
+  }
+} */
+
+@media only screen and (max-width: 550px) {
+  .footer h3 {
+    font-size: 0.8rem;
+  }
+}

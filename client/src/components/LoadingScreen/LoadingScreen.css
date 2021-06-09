@@ -1,0 +1,18 @@
+.LoadingScreen {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+  background-image: url("../../App/Seamless_icon_pattern_supermarket_opac13.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.loading-text {
+  font-size: 2rem;
+  font-weight: bold;
+}

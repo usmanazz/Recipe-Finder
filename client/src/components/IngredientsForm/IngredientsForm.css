@@ -1,0 +1,82 @@
+.IngredientsForm {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  background-color: var(--green-color);
+  max-height: 700px; /* might need to change later */
+  width: 40%;
+  margin: auto;
+  margin-top: 4rem;
+  border-radius: 15px;
+  box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.25);
+}
+
+.ingred-form-title {
+  font-weight: bold;
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.ingred-form-subtitle {
+  color: #333333;
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.error {
+  color: rgb(168, 26, 26);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-right: 10rem;
+}
+
+.findrecipes-btn {
+  display: none;
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 0.7rem 1rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  background-color: var(--dark-green-color);
+  border: none;
+  color: #ffffff;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.findrecipes-btn:hover {
+  background-color: var(--dark-green-color-hover);
+}
+
+.findrecipes-btn:active {
+  background-color: var(--dark-green-color-active);
+}
+
+@media screen and (max-width: 1150px) {
+  .IngredientsForm {
+    width: 460px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .IngredientsForm {
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .IngredientsForm {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .ingred-form-title {
+    font-size: 1.8rem;
+  }
+
+  .ingred-form-subtitle {
+    font-size: 0.6rem;
+  }
+}
