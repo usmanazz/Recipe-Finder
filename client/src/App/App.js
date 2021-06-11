@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 
 import "./App.css";
 import { NavBar } from "../components/NavBar/NavBar";
@@ -22,6 +27,12 @@ function App() {
   const [recipesToShow, setRecipesToShow] = useState([]);
   const [next, setNext] = useState(2);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const setAuth = (boolean) => {
+    setIsAuthenticated(boolean);
+  };
 
   return (
     <Router>
@@ -65,14 +76,42 @@ function App() {
             <Route path="/recipe/:id">
               <Recipe recipes={recipes} />
             </Route>
-            <Route exact path="/account">
-              <MyAccount />
+            <Route
+              exact
+              path="/account"
+              render={(props) =>
+                isAuthenticated ? (
+                  <MyAccount {...props} setAuth={setAuth} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            >
+              {/* <MyAccount /> */}
             </Route>
-            <Route path="/login">
-              <Login />
+            <Route
+              path="/login"
+              render={(props) =>
+                !isAuthenticated ? (
+                  <Login {...props} setAuth={setAuth} />
+                ) : (
+                  <Redirect to="/account" />
+                )
+              }
+            >
+              {/* <Login /> */}
             </Route>
-            <Route path="/signup">
-              <Signup />
+            <Route
+              path="/signup"
+              render={(props) =>
+                !isAuthenticated ? (
+                  <Signup {...props} setAuth={setAuth} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            >
+              {/* <Signup /> */}
             </Route>
           </Switch>
         </div>

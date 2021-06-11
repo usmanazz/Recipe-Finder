@@ -32,6 +32,10 @@ body {
   margin-bottom: 3.75rem;
 }
 
+body.mouse :focus {
+  outline: none;
+}
+
 .App {
   padding-bottom: 3.75rem;
   font-family: var(--montserrat-font);
@@ -49,13 +53,11 @@ body {
   text-align: center;
 }
 
-/* might need to uncomment this again */
-
-/* @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   html {
     background-size: initial;
   }
-} */
+}
 
 @media only screen and (max-width: 550px) {
   .footer h3 {
