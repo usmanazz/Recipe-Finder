@@ -1,46 +1,48 @@
-.Login {
+.ChangeUsernameForm {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   position: relative;
-  align-items: center;
-  margin-top: 6rem;
-  justify-content: center;
+  /* align-items: center; */
+  /* margin-top: 6rem; */
+  /* justify-content: center; */
 }
 
-.login-box {
+.change-username-box {
   width: 25rem;
-  /* height: 30rem; */
   max-height: 40rem;
-  background: #ffffff;
+  /* background: #ffffff;
   box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  padding: 1rem 1.3rem;
+  border-radius: 20px; */
+  /* margin-top: 1rem; */
+  /* margin-bottom: 2rem; */
+  /* padding: 1rem 1.3rem; */
+  padding-top: 1rem;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
   line-height: 1.5rem;
 }
 
-.login-form {
+.change-username-form {
   display: flex;
   flex-direction: column;
 }
 
-.login-title {
-  font-family: var(--segoeUI-font);
+.change-username-title {
+  /* font-family: var(--segoeUI-font); */
   font-weight: bold;
-  font-size: 1.3rem;
+  /* font-size: 1rem; */
   text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1.5rem;
+  /* padding: 1rem 0; */
+  margin-bottom: 2rem;
 }
 
-.login-field {
+.change-username-field {
   display: flex;
   flex-direction: column;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
-.login-field label {
+.change-username-field label {
   font-family: var(--segoeUI-font);
   font-weight: bold;
   padding-bottom: 0.2rem;
@@ -48,22 +50,33 @@
   color: #6e6e6e;
 }
 
-.login-field input {
+.change-username-field input {
   border: 1px solid #eeeeee;
   border-radius: 0;
   height: 3rem;
   padding: 0 0.7rem;
 }
 
-.login-field input:focus {
+.change-username-field input:focus {
   border: 1px solid #007db5;
 }
 
-.login-field input[type="email"] {
+.change-username-field input[type="email"] {
   text-transform: lowercase;
 }
 
-.button.login-btn {
+.main-error-message {
+  padding-bottom: 0.5rem;
+}
+
+.error-message {
+  margin-top: 0.3rem;
+  color: #bf2e35;
+  font-weight: normal;
+  font-size: 0.8rem;
+}
+
+.button.create-account-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,16 +91,16 @@
   font-weight: bold;
   letter-spacing: 0.02rem;
   padding: 1.4rem 0;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.button.login-btn:hover {
+.button.create-account-btn:hover {
   background-color: rgb(0, 0, 0, 0.85);
   cursor: pointer;
 }
 
-.button.login-btn:active {
+.button.create-account-btn:active {
   background-color: black;
 }
 
@@ -105,14 +118,19 @@
 }
 
 @media screen and (max-width: 768px) {
-  .login-box {
-    margin-top: 1rem;
+  .change-username-box {
+    margin-top: 0;
   }
 }
 
 @media screen and (max-width: 460px) {
-  .login-box {
+  .ChangeUsernameForm {
     width: 100%;
     border-radius: 0;
+    padding: 1rem 0;
+  }
+
+  .change-username-box {
+    padding: 1rem 0;
   }
 }

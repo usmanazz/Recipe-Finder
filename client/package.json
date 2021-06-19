@@ -15,7 +15,10 @@
     "react-responsive-modal": "^6.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.1"
+    "react-tabs": "^3.2.2",
+    "react-tabs-css": "^1.4.3",
+    "web-vitals": "^1.1.1",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",

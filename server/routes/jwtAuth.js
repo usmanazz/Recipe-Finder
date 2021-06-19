@@ -6,7 +6,7 @@ const validInfo = require("../middleware/validInfo");
 const authorization = require("../middleware/authorization");
 
 // --------- register route -------------
-router.post("/register", validInfo, async (req, res, next) => {
+router.post("/register", async (req, res, next) => {
   try {
     // 1. destructure req.body (name, email, password)
     const { name, email, password } = req.body;
@@ -43,7 +43,7 @@ router.post("/register", validInfo, async (req, res, next) => {
 });
 
 // -------------- login route --------------
-router.post("/login", validInfo, async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   try {
     // 1. destructure req.body
     const { email, password } = req.body;
@@ -53,7 +53,7 @@ router.post("/login", validInfo, async (req, res, next) => {
       email,
     ]);
 
-    if (user.rows.legnth === 0) {
+    if (user.rows.length === 0) {
       return res.status(401).json("Password or Email is incorrect");
     }
 

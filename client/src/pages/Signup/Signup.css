@@ -66,7 +66,7 @@
   padding-bottom: 0.5rem;
 }
 
-.error {
+.error-message {
   margin-top: 0.3rem;
   color: #bf2e35;
   font-weight: normal;
@@ -116,7 +116,7 @@
 
 @media screen and (max-width: 768px) {
   .signup-box {
-    margin-top: 1rem;
+    margin-top: 0;
   }
 }
 

@@ -3,6 +3,56 @@
   flex-direction: column;
   position: relative;
   align-items: center;
-  margin-top: 6rem;
+  margin-top: 4rem;
   justify-content: center;
+}
+
+.account-box {
+  width: 90%;
+  /* height: 800px; */
+  background: #ffffff;
+  box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  margin-top: 2rem;
+  padding: 1rem 1.3rem;
+  line-height: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.box-sub-titles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.my-account-title {
+  font-family: var(--segoeUI-font);
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.logout-title {
+  font-family: var(--segoeUI-font);
+  font-weight: 700;
+  text-decoration: underline;
+  color: #6e6e6e;
+}
+
+@media screen and (min-width: 1440px) {
+  .account-box {
+    width: 1300px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .MyAccount {
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 602px) {
+  .account-box {
+    width: 100%;
+    border-radius: 0;
+  }
 }
