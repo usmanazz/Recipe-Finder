@@ -17,7 +17,17 @@ router.post("/register", async (req, res, next) => {
     ]);
 
     if (user.rows.length !== 0) {
-      return res.status(401).send("User already exists");
+      return res.status(401).json("User already exists with provided email");
+    }
+
+    // check if username already in database (username is taken)
+    const username = await pool.query(
+      "SELECT * FROM users WHERE user_name=$1",
+      [name]
+    );
+
+    if (username.rows.length !== 0) {
+      return res.status(401).json("Username already taken. Try again");
     }
 
     // 3. Bcrypt user password
@@ -38,7 +48,7 @@ router.post("/register", async (req, res, next) => {
     res.json({ token });
   } catch (err) {
     console.log(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json("Server Error");
   }
 });
 
@@ -72,7 +82,7 @@ router.post("/login", async (req, res, next) => {
     res.json({ token });
   } catch (err) {
     console.log(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json("Server Error");
   }
 });
 
@@ -82,7 +92,7 @@ router.get("/is-verify", authorization, (req, res, next) => {
     res.json(true);
   } catch (err) {
     console.log(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json("Server Error");
   }
 });
 

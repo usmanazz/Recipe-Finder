@@ -69,11 +69,19 @@
   padding-bottom: 0.5rem;
 }
 
-.error-message {
+.message {
   margin-top: 0.3rem;
-  color: #bf2e35;
+  /* color: #bf2e35; */
   font-weight: normal;
   font-size: 0.8rem;
+}
+
+.error-color {
+  color: #bf2e35;
+}
+
+.success-color {
+  color: #24c43e;
 }
 
 .button.create-account-btn {

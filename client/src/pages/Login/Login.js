@@ -41,7 +41,6 @@ export const Login = ({ setAuth }) => {
         setAuth(true);
       }
     } catch (err) {
-      // console.log("error happening here");
       console.log(err.message);
     }
   };

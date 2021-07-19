@@ -1,37 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import "./ChangeUsernameForm.css";
 import { Link } from "react-router-dom";
+// import { use } from "../../../../server/routes/jwtAuth";
 
 export const ChangeUsernameForm = ({ setAuth }) => {
   const [renderError, setRenderError] = useState(false);
+  const [resMessage, setResMessage] = useState("");
 
   const initialValues = {
     currentUsername: "",
     newUsername: "",
   };
 
-  const onSubmit = async (values) => {
-    console.log("Form data ", values);
+  const onSubmit = async (values, { resetForm }) => {
+    // console.log("Form data ", values);
 
-    // try {
-    //   const response = await fetch("http://localhost:5000/auth/register", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(values),
-    //   });
+    try {
+      const response = await fetch(
+        "http://localhost:5000/dashboard/change-username",
+        {
+          method: "POST",
+          headers: {
+            token: localStorage.token,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
 
-    //   const parseRes = await response.json();
-    //   // console.log(parseRes);
+      const parseRes = await response.json();
+      console.log(parseRes);
 
-    //   // save token to local storage
-    //   localStorage.setItem("token", parseRes.token);
-    //   setAuth(true);
-    // } catch (err) {
-    //   console.log(err.message);
-    // }
+      if (parseRes !== "Successfully changed username!") {
+        setResMessage(parseRes);
+      } else {
+        setResMessage(parseRes);
+        resetForm({ values: "" });
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   const validationSchema = Yup.object({
@@ -49,17 +60,31 @@ export const ChangeUsernameForm = ({ setAuth }) => {
         >
           {(formik) => {
             {
-              /* console.log("Formik props", formik); */
+              /* console.log(formik); */
             }
             const { currentUsername, newUsername } = formik.values;
+            const { touched } = formik;
             return (
               <div>
                 <h3 className="change-username-title">Change Username</h3>
 
                 {/* {console.log(renderError)} */}
                 {renderError ? (
-                  <div className="main-error-message error-message">
+                  <div className="main-error-message message error-color">
                     Please fill out all of the fields
+                  </div>
+                ) : null}
+
+                {/* Render res sent from backend */}
+                {resMessage ? (
+                  <div
+                    className={`main-error-message message ${
+                      resMessage === "Successfully changed username!"
+                        ? "success-color"
+                        : "error-color"
+                    }`}
+                  >
+                    {resMessage}
                   </div>
                 ) : null}
 
@@ -95,6 +120,7 @@ export const ChangeUsernameForm = ({ setAuth }) => {
                       !formik.isValid || !currentUsername || !newUsername
                         ? setRenderError(true)
                         : setRenderError(false);
+                      setResMessage("");
                     }}
                   >
                     CHANGE USERNAME

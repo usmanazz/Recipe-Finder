@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 export const Signup = ({ setAuth }) => {
   const [renderError, setRenderError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const initialValues = {
     name: "",
@@ -25,11 +26,16 @@ export const Signup = ({ setAuth }) => {
       });
 
       const parseRes = await response.json();
-      // console.log(parseRes);
+      console.log(parseRes);
 
-      // save token to local storage
-      localStorage.setItem("token", parseRes.token);
-      setAuth(true);
+      // credentials are incorrect, save error message and display
+      if (!parseRes.token) {
+        setErrorMessage(parseRes);
+      } else {
+        // save token to local storage
+        localStorage.setItem("token", parseRes.token);
+        setAuth(true);
+      }
     } catch (err) {
       console.log(err.message);
     }
@@ -63,10 +69,17 @@ export const Signup = ({ setAuth }) => {
               <div>
                 <h3 className="signup-title">CREATE AN ACCOUNT</h3>
 
-                {/* {console.log(renderError)} */}
+                {/* Field errors */}
                 {renderError ? (
                   <div className="main-error-message error-message">
                     Please fill out all of the fields
+                  </div>
+                ) : null}
+
+                {/* Error signing up */}
+                {errorMessage ? (
+                  <div className="main-error-message error-message">
+                    {errorMessage}
                   </div>
                 ) : null}
 
