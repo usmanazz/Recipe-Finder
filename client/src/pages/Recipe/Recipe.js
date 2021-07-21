@@ -91,7 +91,11 @@ export const Recipe = ({ recipes }) => {
             ) : (
               <h4>
                 <span>Can't process information</span>, Click{" "}
-                <a className="originalrecipe-link" href={sourceUrl}>
+                <a
+                  className="originalrecipe-link"
+                  href={sourceUrl}
+                  target="_blank"
+                >
                   here
                 </a>{" "}
                 for full list of instructions.
