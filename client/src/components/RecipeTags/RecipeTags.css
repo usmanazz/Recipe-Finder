@@ -1,0 +1,21 @@
+.recipe-tag {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 585px) {
+  .recipe-tag {
+    margin-left: 1.5rem;
+  }
+}

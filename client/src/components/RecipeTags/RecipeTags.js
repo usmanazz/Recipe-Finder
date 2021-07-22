@@ -5,10 +5,12 @@ export const RecipeTags = ({ recipe }) => {
   const { cuisines, diets } = recipe;
 
   return (
-    <div>
-      <ul>
-        {cuisines ? cuisines.map((cuisine) => <li>{cuisine}</li>) : null}
-        {diets ? diets.map((diet) => <li>{diet}</li>) : null}
+    <div className="RecipeTags">
+      <ul className="recipe-tag">
+        {cuisines
+          ? cuisines.map((cuisine) => <li className="tag">{cuisine}</li>)
+          : null}
+        {diets ? diets.map((diet) => <li className="tag">{diet}</li>) : null}
       </ul>
     </div>
   );

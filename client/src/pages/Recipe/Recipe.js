@@ -24,17 +24,6 @@ export const Recipe = ({ recipes }) => {
         <h2 className="recipe-title">{recipe.title}</h2>
       </div>
 
-      {/* <div className="recipe-tags-container">
-        <ul>
-          <li>Asian</li>
-          <li>Mediterranean</li>
-          <li>dairy free</li>
-          <li>dairy free</li>
-          <li>dairy free</li>
-          <li>dairy free</li>
-        </ul>
-      </div> */}
-
       <RecipeTags recipe={recipe} />
 
       <div className="info-container info-container-fix-format">
