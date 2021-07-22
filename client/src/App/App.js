@@ -29,6 +29,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [count, setCount] = useState(1);
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
@@ -55,6 +56,8 @@ function App() {
                 setRecipes={setRecipes}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
+                count={count}
+                setCount={setCount}
               />
             </Route>
             <Route path="/about">

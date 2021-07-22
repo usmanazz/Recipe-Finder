@@ -56,7 +56,14 @@ export const IngredientsForm = ({
         setIngredients={setIngredients}
       />
 
-      <Link className="findrecipes-btn" to="/results" onClick={handleSubmit}>
+      <Link
+        className="findrecipes-btn"
+        to="/results"
+        onClick={() => {
+          handleSubmit();
+          setIngredients([]);
+        }}
+      >
         Find Recipes
       </Link>
     </div>

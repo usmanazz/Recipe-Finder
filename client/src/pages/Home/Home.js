@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { IngredientsForm } from "../../components/IngredientsForm/IngredientsForm";
 import "./Home.css";
@@ -16,7 +16,18 @@ export const Home = ({
   setRecipes,
   isLoading,
   setIsLoading,
+  count,
+  setCount,
 }) => {
+  // reset website content when revisiting home page
+  useEffect(() => {
+    setCount((prev) => prev + 1);
+    console.log(count);
+    if (count > 1) {
+      window.location.reload();
+    }
+  }, []);
+
   return (
     <div className="Home">
       <h2 className="how-it-works-link">
