@@ -61,7 +61,6 @@ export const IngredientsForm = ({
         to="/results"
         onClick={() => {
           handleSubmit();
-          setIngredients([]);
         }}
       >
         Find Recipes
