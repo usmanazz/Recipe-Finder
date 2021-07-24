@@ -24,6 +24,9 @@ export const Home = ({
     // reset ingredients form when revisit Home page
     setIngredients([]);
 
+    // reset localStorage
+    // sessionStorage.removeItem("recipes");
+
     setCount((prev) => prev + 1);
     // console.log(count);
     if (count > 1) {

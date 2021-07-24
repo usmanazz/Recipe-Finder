@@ -26,6 +26,43 @@ export const Results = ({
   const [numOfIngredients, setNumOfIngredients] = useState([0, 20]);
   const [calories, setCalories] = useState([0, 2000]);
 
+  // const sessionAndFetchedDataNotEqual = (storageData, fetchedData) => {
+  //   if (storageData) {
+  //     const equals =
+  //       storageData.length === fetchedData.length &&
+  //       storageData.every((val, i) => val.id === fetchedData[i].id);
+  //     if (equals) return true;
+  //     else return false;
+  //   }
+  //   return false;
+  // };
+
+  // useEffect(() => {
+  //   if (
+  //     sessionAndFetchedDataNotEqual(
+  //       sessionStorage.getItem("recipes"),
+  //       recipes
+  //     ) ||
+  //     recipes.length === 0
+  //   ) {
+  //     setRecipes(JSON.parse(sessionStorage.getItem("recipes")));
+  //     setIsLoading(false);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   sessionStorage.setItem("recipes", JSON.stringify(recipes));
+  // }, [recipes]);
+
+  useEffect(() => {
+    // console.log(JSON.parse(sessionStorage.getItem("recipes")));
+    // setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
+    // setIsLoading(false);
+
+    setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
+    setIsLoading(false);
+  }, []);
+
   useEffect(() => {
     loopWithSlice(0, recipesPerPage);
   }, [recipes]);
