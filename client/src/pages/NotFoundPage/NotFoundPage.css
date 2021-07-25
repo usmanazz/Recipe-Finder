@@ -1,0 +1,23 @@
+.NotFoundPage {
+  display: block;
+  position: fixed;
+  z-index: 50;
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+  background-image: url("../../App/Seamless_icon_pattern_supermarket_opac13.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.notfound-text {
+  font-size: 2rem;
+  margin-top: 5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.four-o-four {
+  font-size: 3rem;
+  font-weight: bold;
+}

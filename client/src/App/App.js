@@ -16,6 +16,7 @@ import ScrollToTop from "../customHooks/ScrollToTop";
 import { Login } from "../pages/Login/Login";
 import { Signup } from "../pages/Signup/Signup";
 import { MyAccount } from "../pages/MyAccount/MyAccount";
+import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
 
 function App() {
   const [ingredients, setIngredients] = useState([]);
@@ -116,6 +117,9 @@ function App() {
             >
               {/* <Signup /> */}
             </Route>
+
+            {/* 404 page for any path not specified above */}
+            <Route exact component={NotFoundPage} />
           </Switch>
         </div>
         <div className="footer">
