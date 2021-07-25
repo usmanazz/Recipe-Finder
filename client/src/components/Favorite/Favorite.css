@@ -1,0 +1,81 @@
+.Favorite {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+.favorite_recipe-info {
+  margin-right: 7rem;
+}
+
+.favorite_recipe-title {
+  font-size: 1.2rem;
+}
+
+.favorite_cook-time {
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin-left: 1rem;
+}
+
+.favorite_recipe-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+  background-image: url("https://spoonacular.com/recipeImages/74358-556x370.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 75px;
+  width: 75px;
+  transition: 0.3s;
+}
+
+.favorite_recipe-img:hover {
+  background-image: unset;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+
+.favorite_recipe-img img {
+  display: none;
+  height: 30px;
+  width: 30px;
+  transition: 0.3s;
+}
+
+.favorite_recipe-img:hover img {
+  display: block;
+}
+
+@media screen and (max-width: 670px) {
+  .favorite_recipe-info {
+    margin-right: 6rem;
+  }
+
+  .favorite_recipe-title {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .favorite_recipe-info {
+    margin-right: 4rem;
+  }
+
+  .favorite_recipe-title {
+    font-size: 0.9rem;
+    word-break: break-word;
+  }
+
+  .favorite_cook-time {
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .favorite_recipe-info {
+    margin-right: 2.5rem;
+  }
+}

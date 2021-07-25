@@ -91,14 +91,21 @@ button {
   width: 100%;
   height: 100%;
 }
-.active-content {
+.active-content-tab1 {
   display: flex;
   justify-content: space-evenly;
   /* flex-wrap: wrap; */
 }
 
+.active-content-tab2 {
+  display: block;
+  justify-content: space-evenly;
+  /* flex-wrap: wrap; */
+}
+
 @media screen and (max-width: 980px) {
-  .active-content {
+  .active-content-tab1,
+  .active-content-tab2 {
     flex-direction: column;
     align-items: center;
     justify-content: unset;
