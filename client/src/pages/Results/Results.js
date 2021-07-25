@@ -59,8 +59,10 @@ export const Results = ({
     // setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
     // setIsLoading(false);
 
-    setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
-    setIsLoading(false);
+    if (recipes.length === 0) {
+      setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
+      setIsLoading(false);
+    }
   }, []);
 
   useEffect(() => {

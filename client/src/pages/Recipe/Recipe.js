@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../../components/UI/Button";
 
 import "./Recipe.css";
@@ -7,9 +7,21 @@ import { useParams } from "react-router";
 import { NutritionInfo } from "../../components/NutritionInfo/NutritionInfo";
 import { RecipeTags } from "../../components/RecipeTags/RecipeTags";
 
-export const Recipe = ({ recipes }) => {
+export const Recipe = ({ recipes, setRecipes }) => {
   const { id } = useParams();
   const recipe = recipes.find((recipe) => recipe.id === parseInt(id));
+  console.log("recipe", recipe);
+
+  // useEffect(() => {
+  //   console.log("in useeffect");
+  //   if (!recipes) {
+  //     console.log("hello");
+  //     setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"), () => {
+  //       recipe = recipes.find((recipe) => recipe.id === parseInt(id));
+  //     });
+  //   }
+  // }, []);
+
   const { extendedIngredients, sourceUrl, analyzedInstructions } = recipe;
 
   const handleFavClick = () => {

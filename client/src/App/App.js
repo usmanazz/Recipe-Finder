@@ -77,7 +77,7 @@ function App() {
               />
             </Route>
             <Route path="/recipe/:id">
-              <Recipe recipes={recipes} />
+              <Recipe recipes={recipes} setRecipes={setRecipes} />
             </Route>
             <Route
               exact

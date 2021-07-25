@@ -21,16 +21,15 @@ export const Home = ({
 }) => {
   // reset website content when revisiting home page
   useEffect(() => {
+    // reset localStorage
+    sessionStorage.removeItem("recipes");
+
     // reset ingredients form when revisit Home page
     setIngredients([]);
 
-    // reset localStorage
-    // sessionStorage.removeItem("recipes");
-
     setCount((prev) => prev + 1);
-    // console.log(count);
     if (count > 1) {
-      window.location.reload();
+      window.location = "/";
     }
   }, []);
 
