@@ -19,6 +19,8 @@ export const Results = ({
   setNext,
   isLoading,
   setIsLoading,
+  count,
+  setCount,
 }) => {
   const recipesPerPage = 2;
   const [selectedRadio, setSelectedRadio] = useState("");
@@ -58,6 +60,9 @@ export const Results = ({
     // console.log(JSON.parse(sessionStorage.getItem("recipes")));
     // setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
     // setIsLoading(false);
+
+    // to ensure reset on when visit homepage
+    setCount((prev) => prev + 1);
 
     if (recipes.length === 0) {
       setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));

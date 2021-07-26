@@ -74,10 +74,17 @@ function App() {
                 setNext={setNext}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
+                count={count}
+                setCount={setCount}
               />
             </Route>
             <Route path="/recipe/:id">
-              <Recipe recipes={recipes} setRecipes={setRecipes} />
+              <Recipe
+                recipes={recipes}
+                setRecipes={setRecipes}
+                count={count}
+                setCount={setCount}
+              />
             </Route>
             <Route
               exact

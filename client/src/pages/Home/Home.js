@@ -27,7 +27,7 @@ export const Home = ({
     // reset ingredients form when revisit Home page
     setIngredients([]);
 
-    setCount((prev) => prev + 1);
+    // setCount((prev) => prev + 1);
     if (count > 1) {
       window.location = "/";
     }
