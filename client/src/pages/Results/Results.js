@@ -148,11 +148,11 @@ export const Results = ({
   };
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return <TryAgainScreen />;
   } else if (isLoading && recipes.length === 0) {
     return <TryAgainScreen />;
   } else if (!isLoading && recipes.length === 0) {
-    return <TryAgainScreen />;
+    return <LoadingScreen />;
   }
   return (
     <div className="Results">
