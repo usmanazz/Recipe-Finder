@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -34,6 +34,26 @@ function App() {
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
+  };
+
+  useEffect(() => {
+    isUserAuth();
+  }, []);
+
+  const isUserAuth = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/auth/is-verify", {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
+
+      const parseRes = await response.json();
+
+      // set Authenticated to true for user to stay logged in on refresh
+      parseRes === true ? setAuth(true) : setAuth(false);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (
