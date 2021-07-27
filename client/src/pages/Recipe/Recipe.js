@@ -14,7 +14,7 @@ export const Recipe = ({ recipes, setRecipes, count, setCount }) => {
   // const storageRecipes = JSON.parse(sessionStorage.getItem("recipes"));
   // const recipe = storageRecipes.find((recipe) => recipe.id === parseInt(id));
   // const { extendedIngredients, sourceUrl, analyzedInstructions } = recipe;
-  console.log("recipe", recipe);
+  console.log("recipe", JSON.stringify(recipe));
 
   useEffect(() => {
     // to ensure reset on when visit homepage

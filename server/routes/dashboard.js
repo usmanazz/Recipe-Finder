@@ -4,6 +4,7 @@ const pool = require("../db");
 const bcrypt = require("bcrypt");
 const authorization = require("../middleware/authorization");
 
+// ------------- get user from authrization middleware ---------------
 router.get("/", authorization, async (req, res, next) => {
   try {
     // req.user has the payload
@@ -20,6 +21,8 @@ router.get("/", authorization, async (req, res, next) => {
     res.status(500).json("Server Error");
   }
 });
+
+// ======================= Change Credentials Endpoints ================== //
 
 // ------------- change username route ---------------
 router.post("/change-username", authorization, async (req, res, next) => {
@@ -106,6 +109,104 @@ router.post("/change-password", authorization, async (req, res, next) => {
   } catch (err) {
     console.log(err.message);
     res.status(500).json("Server Error");
+  }
+});
+
+// ======================= User Favorites Endpoints ================== //
+
+// ------------- add favorite route ---------------
+router.post("/add-favorite", authorization, async (req, res, next) => {
+  try {
+    // 1. destructure req.body
+    const { recipeId, recipeInfo } = req.body;
+
+    // 2. get current authorized user's email
+    const user_email = await pool.query(
+      "SELECT user_email FROM users WHERE user_id = $1",
+      [req.user]
+    );
+
+    // 3. add recipe in db if not already added
+    const recipe = await pool.query(
+      "SELECT recipe_id FROM recipes WHERE recipe_id=$1",
+      [recipeId]
+    );
+
+    if (!recipe.rows[0]) {
+      await pool.query(
+        "INSERT INTO recipes (recipe_id, recipe_info) VALUES ($1, $2)",
+        [recipeId, recipeInfo]
+      );
+    }
+
+    // 4. add relation (user_email, recipe_id) to favorites table
+    await pool.query(
+      "INSERT INTO favorites (user_email, recipe_id) VALUES ($1, $2)",
+      [user_email.rows[0].user_email, recipeId]
+    );
+
+    // 5. send response back to user
+    res.json("Added to favorites!");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// ------------- get favorites route ---------------
+router.get("/get-favorites", authorization, async (req, res, next) => {
+  try {
+    // 1. get authorized user
+    const user = await pool.query(
+      "SELECT user_email FROM users WHERE user_id=$1",
+      [req.user]
+    );
+
+    const user_email = user.rows[0].user_email;
+    console.log(user_email);
+
+    // 2. get list of favorites associated with user
+    const favorites = await pool.query(
+      `SELECT recipes.recipe_info FROM users 
+       INNER JOIN favorites
+       ON users.user_email = favorites.user_email
+       INNER JOIN recipes
+       ON recipes.recipe_id = favorites.recipe_id
+       WHERE users.user_email=$1
+      `,
+      [user_email]
+    );
+
+    // 3. give back list of favorites
+    res.json(favorites.rows);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// ------------- delete favorites route ---------------
+router.delete("/remove-favorites", authorization, async (req, res, next) => {
+  try {
+    // 1. destructure req.body
+    const { recipeId } = req.body;
+
+    // 2. get authorized user
+    const user = await pool.query(
+      "SELECT user_email FROM users WHERE user_id=$1",
+      [req.user]
+    );
+
+    const user_email = user.rows[0].user_email;
+
+    // 3. remove user-->recipe entry from favorites table in db
+    await pool.query(
+      "DELETE FROM favorites WHERE user_email=$1 AND recipe_id=$2",
+      [user_email, recipeId]
+    );
+
+    // 4. send confirmation of deletion
+    res.json("Removed from favorites!");
+  } catch (err) {
+    console.log(err);
   }
 });
 
