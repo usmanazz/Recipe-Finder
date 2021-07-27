@@ -19,12 +19,56 @@ export const Results = ({
   setNext,
   isLoading,
   setIsLoading,
+  count,
+  setCount,
 }) => {
   const recipesPerPage = 2;
   const [selectedRadio, setSelectedRadio] = useState("");
   const [cookTime, setCookTime] = useState([0, 200]);
   const [numOfIngredients, setNumOfIngredients] = useState([0, 20]);
   const [calories, setCalories] = useState([0, 2000]);
+
+  // const sessionAndFetchedDataNotEqual = (storageData, fetchedData) => {
+  //   if (storageData) {
+  //     const equals =
+  //       storageData.length === fetchedData.length &&
+  //       storageData.every((val, i) => val.id === fetchedData[i].id);
+  //     if (equals) return true;
+  //     else return false;
+  //   }
+  //   return false;
+  // };
+
+  // useEffect(() => {
+  //   if (
+  //     sessionAndFetchedDataNotEqual(
+  //       sessionStorage.getItem("recipes"),
+  //       recipes
+  //     ) ||
+  //     recipes.length === 0
+  //   ) {
+  //     setRecipes(JSON.parse(sessionStorage.getItem("recipes")));
+  //     setIsLoading(false);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   sessionStorage.setItem("recipes", JSON.stringify(recipes));
+  // }, [recipes]);
+
+  useEffect(() => {
+    // console.log(JSON.parse(sessionStorage.getItem("recipes")));
+    // setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
+    // setIsLoading(false);
+
+    // to ensure reset on when visit homepage
+    setCount((prev) => prev + 1);
+
+    if (recipes.length === 0) {
+      setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
+      setIsLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     loopWithSlice(0, recipesPerPage);
@@ -104,11 +148,11 @@ export const Results = ({
   };
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return <TryAgainScreen />;
   } else if (isLoading && recipes.length === 0) {
     return <TryAgainScreen />;
   } else if (!isLoading && recipes.length === 0) {
-    return <TryAgainScreen />;
+    return <LoadingScreen />;
   }
   return (
     <div className="Results">

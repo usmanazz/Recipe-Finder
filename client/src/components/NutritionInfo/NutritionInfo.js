@@ -4,9 +4,7 @@ import { Button } from "../../components/UI/Button";
 import "./NutritionInfo.css";
 import { useParams } from "react-router";
 
-export const NutritionInfo = ({ recipes }) => {
-  const { id } = useParams();
-  const recipe = recipes.find((recipe) => recipe.id === parseInt(id));
+export const NutritionInfo = ({ recipe }) => {
   const { nutrients } = recipe.nutrition;
 
   const handleViewInfoClick = () => {

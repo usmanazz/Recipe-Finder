@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -16,6 +16,7 @@ import ScrollToTop from "../customHooks/ScrollToTop";
 import { Login } from "../pages/Login/Login";
 import { Signup } from "../pages/Signup/Signup";
 import { MyAccount } from "../pages/MyAccount/MyAccount";
+import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
 
 function App() {
   const [ingredients, setIngredients] = useState([]);
@@ -33,6 +34,26 @@ function App() {
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
+  };
+
+  useEffect(() => {
+    isUserAuth();
+  }, []);
+
+  const isUserAuth = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/auth/is-verify", {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
+
+      const parseRes = await response.json();
+
+      // set Authenticated to true for user to stay logged in on refresh
+      parseRes === true ? setAuth(true) : setAuth(false);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (
@@ -74,10 +95,17 @@ function App() {
                 setNext={setNext}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
+                count={count}
+                setCount={setCount}
               />
             </Route>
             <Route path="/recipe/:id">
-              <Recipe recipes={recipes} />
+              <Recipe
+                recipes={recipes}
+                setRecipes={setRecipes}
+                count={count}
+                setCount={setCount}
+              />
             </Route>
             <Route
               exact
@@ -116,6 +144,9 @@ function App() {
             >
               {/* <Signup /> */}
             </Route>
+
+            {/* 404 page for any path not specified above */}
+            <Route exact component={NotFoundPage} />
           </Switch>
         </div>
         <div className="footer">

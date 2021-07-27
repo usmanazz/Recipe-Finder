@@ -22,8 +22,12 @@ export const IngredientsForm = ({
 }) => {
   const handleSubmit = () => {
     Spoonacular.searchRecipes(ingredients).then((recipes) => {
-      setRecipes(recipes);
-      setIsLoading(false);
+      // setRecipes(recipes);
+      // setIsLoading(false);
+
+      sessionStorage.setItem("recipes", JSON.stringify(recipes));
+      setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
+      // setIsLoading(false);
     });
   };
 
