@@ -134,6 +134,7 @@
   }
 
   .nav-container {
+    position: fixed;
     top: 0;
     justify-content: center;
   }
@@ -143,16 +144,16 @@
   }
 
   .links {
-    position: absolute;
+    position: fixed;
     left: 0;
-    height: 100vh;
+    height: 50vh;
     top: 3rem;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50%;
-    transform: translateX(-100%);
+    transform: translateX(-110%);
     transition: transform 0.5s ease-in 0s;
     z-index: 100;
   }

@@ -40,6 +40,14 @@ export const NavBar = () => {
     // Toggle Nav
     nav.classList.toggle("nav-active");
 
+    // add box shadow to side-nav when displayed
+    if (nav.classList.contains("nav-active")) {
+      nav.style.boxShadow = "4px 6px 4px rgba(0, 0, 0, 0.25)";
+    } else if (!nav.classList.contains("nav-active")) {
+      console.log("hello");
+      nav.style.boxShadow = "none";
+    }
+
     // Animate Links
     navLinks.forEach((link, index) => {
       if (link.style.animation) {
@@ -53,6 +61,10 @@ export const NavBar = () => {
     burger.classList.toggle("toggle");
   };
 
+  const closeSideNav = () => {
+    handleNavSlide();
+  };
+
   return (
     <div className="nav-container">
       <div className="nav-title-container">
@@ -60,8 +72,12 @@ export const NavBar = () => {
       </div>
 
       <div className="links">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <Link to="/" onClick={closeSideNav}>
+          Home
+        </Link>
+        <Link to="/about" onClick={closeSideNav}>
+          About
+        </Link>
         <Button
           handleClick={handleLoginClick}
           label="Log In"
@@ -72,10 +88,10 @@ export const NavBar = () => {
           label="Sign Up"
           type="nav-btn-2"
         />
-        <Link className="mobile-only" to="/login">
+        <Link className="mobile-only" to="/login" onClick={closeSideNav}>
           Log In
         </Link>
-        <Link className="mobile-only" to="/signup">
+        <Link className="mobile-only" to="/signup" onClick={closeSideNav}>
           Sign Up
         </Link>
       </div>
