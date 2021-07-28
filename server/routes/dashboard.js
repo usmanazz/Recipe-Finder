@@ -148,7 +148,7 @@ router.post("/add-favorite", authorization, async (req, res, next) => {
     // 5. send response back to user
     res.json("Added to favorites!");
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
   }
 });
 
@@ -162,7 +162,6 @@ router.get("/get-favorites", authorization, async (req, res, next) => {
     );
 
     const user_email = user.rows[0].user_email;
-    console.log(user_email);
 
     // 2. get list of favorites associated with user
     const favorites = await pool.query(
@@ -184,7 +183,7 @@ router.get("/get-favorites", authorization, async (req, res, next) => {
 });
 
 // ------------- delete favorites route ---------------
-router.delete("/remove-favorites", authorization, async (req, res, next) => {
+router.delete("/remove-favorite", authorization, async (req, res, next) => {
   try {
     // 1. destructure req.body
     const { recipeId } = req.body;

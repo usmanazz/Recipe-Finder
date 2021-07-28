@@ -60,6 +60,7 @@ export const Results = ({
     // console.log(JSON.parse(sessionStorage.getItem("recipes")));
     // setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
     // setIsLoading(false);
+    console.log(recipes);
 
     // to ensure reset on when visit homepage
     setCount((prev) => prev + 1);

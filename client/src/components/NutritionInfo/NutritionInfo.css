@@ -29,6 +29,7 @@
 
 .button.view-info-btn:hover {
   background-color: var(--green-color-hover);
+  cursor: pointer;
 }
 
 .button.view-info-btn:active {

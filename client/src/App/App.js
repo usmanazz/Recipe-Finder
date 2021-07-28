@@ -5,6 +5,8 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
 import { NavBar } from "../components/NavBar/NavBar";
@@ -18,6 +20,7 @@ import { Signup } from "../pages/Signup/Signup";
 import { MyAccount } from "../pages/MyAccount/MyAccount";
 import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
 
+toast.configure();
 function App() {
   const [ingredients, setIngredients] = useState([]);
   const [text, setText] = useState("");
@@ -105,6 +108,7 @@ function App() {
                 setRecipes={setRecipes}
                 count={count}
                 setCount={setCount}
+                isAuthenticated={isAuthenticated}
               />
             </Route>
             <Route
