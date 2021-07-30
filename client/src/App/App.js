@@ -60,7 +60,7 @@ function App() {
     <Router>
       <div className="App">
         <NavBar />
-        <div>
+        <div className="content-container">
           <ScrollToTop />
           <Switch>
             <Route exact path="/">

@@ -20,6 +20,7 @@ export const NavBar = () => {
       // close side nav if resize window greater than 768px
       const nav = document.querySelector(".links");
       if (window.innerWidth > 768 && nav.classList.contains("nav-active")) {
+        console.log("WTFFFFFF");
         handleNavSlide();
       }
 
@@ -62,7 +63,10 @@ export const NavBar = () => {
   };
 
   const closeSideNav = () => {
-    handleNavSlide();
+    const nav = document.querySelector(".links");
+    if (nav.classList.contains("nav-active")) {
+      handleNavSlide();
+    }
   };
 
   return (

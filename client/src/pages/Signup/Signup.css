@@ -3,7 +3,7 @@
   flex-direction: column;
   position: relative;
   align-items: center;
-  margin-top: 6rem;
+  /* margin-top: 6rem; */
   justify-content: center;
 }
 
@@ -116,7 +116,7 @@
 
 @media screen and (max-width: 768px) {
   .signup-box {
-    margin-top: 0;
+    margin-top: 1rem;
   }
 }
 

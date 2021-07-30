@@ -146,12 +146,13 @@
   .links {
     position: fixed;
     left: 0;
-    height: 50vh;
+    height: 40vh;
     top: 3rem;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* justify-content: center; */
     width: 50%;
     transform: translateX(-110%);
     transition: transform 0.5s ease-in 0s;
@@ -164,7 +165,7 @@
 
   .links a {
     font-size: 0.8rem;
-    margin: 2rem 0;
+    margin: 1.25rem 0;
     opacity: 0;
   }
 
