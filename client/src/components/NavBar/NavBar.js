@@ -82,18 +82,15 @@ export const NavBar = ({ isAuthenticated }) => {
         <Link to="/about" onClick={closeSideNav}>
           About
         </Link>
-        <Button
-          handleClick={handleLoginClick}
-          label={isAuthenticated ? "Account" : "Log In"}
-          type="nav-btn-1"
-        />
-        <Button
-          handleClick={handleSignupClick}
-          label="Sign Up"
-          type="nav-btn-2"
-        />
+        <Link to="/login" className="desktop-only-link">
+          {isAuthenticated ? "My Account" : "Log In"}
+        </Link>
+        <Link to="/signup" className="desktop-only-link">
+          Sign Up
+        </Link>
+
         <Link className="mobile-only" to="/login" onClick={closeSideNav}>
-          Log In
+          {isAuthenticated ? "My Account" : "Log In"}
         </Link>
         <Link className="mobile-only" to="/signup" onClick={closeSideNav}>
           Sign Up
