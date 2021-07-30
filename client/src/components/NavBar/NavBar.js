@@ -5,7 +5,7 @@ import { Button } from "../UI/Button";
 import accountLogo from "./outline_person_outline_black_24dp.png";
 import "./NavBar.css";
 
-export const NavBar = () => {
+export const NavBar = ({ isAuthenticated }) => {
   const handleLoginClick = () => {
     console.log("login page");
   };
@@ -84,7 +84,7 @@ export const NavBar = () => {
         </Link>
         <Button
           handleClick={handleLoginClick}
-          label="Log In"
+          label={isAuthenticated ? "Account" : "Log In"}
           type="nav-btn-1"
         />
         <Button

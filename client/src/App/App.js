@@ -64,7 +64,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar />
+        <NavBar isAuthenticated={isAuthenticated} />
         <div className="content-container">
           <ScrollToTop />
           <Switch>
