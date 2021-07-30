@@ -8,7 +8,7 @@
 }
 
 .title-container h2 {
-  text-decoration: none;
+  text-decoration: underline;
   color: var(--dark-green-color);
   font-family: var(--segoeUI-font);
   font-weight: bold;
