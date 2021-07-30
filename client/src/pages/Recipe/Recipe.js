@@ -15,10 +15,23 @@ export const Recipe = ({
   count,
   setCount,
   isAuthenticated,
+  favoritesList,
+  setFavoritesList,
 }) => {
   const { id } = useParams();
-  // console.log(id);
-  const recipe = recipes.find((recipe) => recipe.id === parseInt(id));
+
+  // get recipe from either user's favorite list or results page
+  const userFavRecipe =
+    favoritesList.length !== 0
+      ? favoritesList.find((favorite) => favorite.id === parseInt(id))
+      : null;
+  const resultsRecipe =
+    recipes.length !== 0
+      ? recipes.find((recipe) => recipe.id === parseInt(id))
+      : null;
+
+  const recipe = userFavRecipe ? userFavRecipe : resultsRecipe;
+  // const recipe = recipes.find((recipe) => recipe.id === parseInt(id));
   const [renderFavButton, setRenderFavButton] = useState(false);
   // const storageRecipes = JSON.parse(sessionStorage.getItem("recipes"));
   // const recipe = storageRecipes.find((recipe) => recipe.id === parseInt(id));
@@ -31,19 +44,23 @@ export const Recipe = ({
   }, []);
 
   // render favorite button based on user's favorites
-  useEffect(async () => {
-    if (isAuthenticated) {
-      const favorites = await getFavorites();
-      if (favorites.length !== 0) {
-        const parseFavorites = favorites.map((recipe) =>
-          JSON.parse(recipe.recipe_info)
-        );
-        const favorite = parseFavorites.find(
-          (recipe) => recipe.id === parseInt(id)
-        );
-        favorite ? setRenderFavButton(true) : setRenderFavButton(false);
+  useEffect(() => {
+    async function fetchData() {
+      if (isAuthenticated) {
+        const favorites = await getFavorites();
+        if (favorites.length !== 0) {
+          const parseFavorites = favorites.map((recipe) =>
+            JSON.parse(recipe.recipe_info)
+          );
+          const favorite = parseFavorites.find(
+            (recipe) => recipe.id === parseInt(id)
+          );
+          favorite ? setRenderFavButton(true) : setRenderFavButton(false);
+        }
       }
     }
+
+    fetchData();
   }, []);
 
   // api call to get user's list of favorites

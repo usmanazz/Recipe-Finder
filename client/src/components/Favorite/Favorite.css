@@ -1,3 +1,13 @@
+.favorite-link {
+  text-decoration: none;
+  color: black;
+  transition: 0.2s ease-in;
+}
+
+.favorite-link:hover {
+  color: rgba(0, 0, 0, 0.3);
+}
+
 .Favorite {
   display: flex;
   justify-content: space-between;
@@ -23,7 +33,6 @@
   align-items: center;
   justify-content: center;
   margin: 0.5rem 0;
-  background-image: url("https://spoonacular.com/recipeImages/74358-556x370.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -42,11 +51,12 @@
   display: none;
   height: 30px;
   width: 30px;
-  transition: 0.3s;
+  transition: 0.3s ease-in;
 }
 
 .favorite_recipe-img:hover img {
   display: block;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 670px) {

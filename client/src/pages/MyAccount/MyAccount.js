@@ -3,7 +3,12 @@ import React from "react";
 import "./MyAccount.css";
 import { Tabs } from "../../components/Tabs/Tabs";
 
-export const MyAccount = ({ setAuth }) => {
+export const MyAccount = ({
+  setAuth,
+  isAuthenticated,
+  favoritesList,
+  setFavoritesList,
+}) => {
   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
@@ -19,7 +24,11 @@ export const MyAccount = ({ setAuth }) => {
             Log out
           </h1>
         </div>
-        <Tabs />
+        <Tabs
+          isAuthenticated={isAuthenticated}
+          favoritesList={favoritesList}
+          setFavoritesList={setFavoritesList}
+        />
       </div>
     </div>
   );

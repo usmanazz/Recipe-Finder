@@ -1,28 +1,98 @@
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 import deleteIcon from "./outline_delete_outline_black_24dp.png";
 import "./Favorite.css";
 
 export const Favorite = ({
+  favorite,
+  favoritesList,
+  setFavoritesList,
   index,
-  ingredient,
-  ingredients,
-  setIngredients,
+  isAuthenticated,
 }) => {
-  //   const handleDelete = () => {
-  //     setIngredients(ingredients.filter((_, id) => id !== index));
-  //   };
+  const { title, readyInMinutes, image } = favorite;
+  const [showImage, setShowImage] = useState(true);
+
+  const handleDelete = () => {
+    console.log(favorite.id);
+    const newFavList = favoritesList.filter((_, id) => id !== favorite.id);
+    setFavoritesList(newFavList);
+  };
+
+  const handleImage = () => {
+    setShowImage((prev) => !prev);
+  };
+
+  const handleFavDelete = async () => {
+    // user needs to be logged in to favorite/unfavorite
+    if (isAuthenticated) {
+      // user wants to delete recipe from favorites
+      await removeRecipeFromFavorites();
+      window.location = "/account";
+      console.log("after async function");
+      // removes recipe from the displayed list
+      // handleDelete();
+      toast.success("Removed from Favorites!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    }
+  };
+
+  // api call to remove recipe from user's favorites
+  const removeRecipeFromFavorites = async () => {
+    try {
+      const body = {
+        recipeId: favorite.id,
+      };
+
+      const response = await fetch(
+        "http://localhost:5000/dashboard/remove-favorite",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            token: localStorage.token,
+          },
+          body: JSON.stringify(body),
+        }
+      );
+      console.log("inside async function");
+
+      const parseRes = await response.json();
+      console.log(parseRes);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="Favorite">
-      <div className="favorite_recipe-info">
-        <h1 className="favorite_recipe-title">
-          1. Chicken Alfredo Chicken Alfredo
-        </h1>
-        <div className="favorite_cook-time">Cook Time: 24 minutes</div>
-      </div>
+      <Link to={`/recipe/${favorite.id}`} className="favorite-link">
+        <div className="favorite_recipe-info">
+          <h1 className="favorite_recipe-title">
+            {index + 1}. {title}
+          </h1>
+          <div className="favorite_cook-time">
+            Cook Time: {readyInMinutes}min
+          </div>
+        </div>
+      </Link>
 
-      <div className="favorite_recipe-img">
+      <div
+        className="favorite_recipe-img"
+        style={{ backgroundImage: `url(${image})` }}
+        onClick={() => {
+          handleFavDelete();
+        }}
+      >
         <img src={deleteIcon} alt="delete button for favorited recipe" />
       </div>
     </div>

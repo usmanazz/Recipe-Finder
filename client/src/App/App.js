@@ -35,6 +35,8 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [count, setCount] = useState(1);
 
+  const [favoritesList, setFavoritesList] = useState([]);
+
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
@@ -109,6 +111,8 @@ function App() {
                 count={count}
                 setCount={setCount}
                 isAuthenticated={isAuthenticated}
+                favoritesList={favoritesList}
+                setFavoritesList={setFavoritesList}
               />
             </Route>
             <Route
@@ -116,7 +120,13 @@ function App() {
               path="/account"
               render={(props) =>
                 isAuthenticated ? (
-                  <MyAccount {...props} setAuth={setAuth} />
+                  <MyAccount
+                    {...props}
+                    setAuth={setAuth}
+                    isAuthenticated={isAuthenticated}
+                    favoritesList={favoritesList}
+                    setFavoritesList={setFavoritesList}
+                  />
                 ) : (
                   <Redirect to="/login" />
                 )
