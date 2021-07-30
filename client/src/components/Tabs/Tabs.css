@@ -78,7 +78,9 @@ button {
 }
 .content h2 {
   padding: 0px 0 5px 0px;
-  font-size: 1.2rem;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1.3rem;
   text-align: center;
 }
 .content hr {

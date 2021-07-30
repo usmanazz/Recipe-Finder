@@ -160,7 +160,6 @@ router.get("/get-favorites", authorization, async (req, res, next) => {
       "SELECT user_email FROM users WHERE user_id=$1",
       [req.user]
     );
-
     const user_email = user.rows[0].user_email;
 
     // 2. get list of favorites associated with user

@@ -43,7 +43,9 @@ export const Tabs = ({ isAuthenticated, favoritesList, setFavoritesList }) => {
             toggleState === 1 ? "content active-content-tab2" : "content"
           }
         >
-          <h2>5 of 5 Favorites</h2>
+          {favoritesList.length !== 0 && (
+            <h2>{favoritesList.length} Favorites</h2>
+          )}
           <FavoriteList
             isAuthenticated={isAuthenticated}
             favoritesList={favoritesList}

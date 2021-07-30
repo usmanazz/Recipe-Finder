@@ -17,7 +17,6 @@ export const FavoriteList = ({
             JSON.parse(recipe.recipe_info)
           );
 
-          console.log(parseFavorites);
           setFavoritesList(parseFavorites);
         }
       }

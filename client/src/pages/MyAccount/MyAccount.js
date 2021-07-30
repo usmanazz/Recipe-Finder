@@ -12,6 +12,7 @@ export const MyAccount = ({
   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
+    setFavoritesList([]);
     setAuth(false);
   };
 
