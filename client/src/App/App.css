@@ -21,7 +21,7 @@ html {
   font-size: 16px;
   background-image: url("./Seamless_icon_pattern_supermarket_opac13.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   position: relative;
   min-height: 100%;
 }
