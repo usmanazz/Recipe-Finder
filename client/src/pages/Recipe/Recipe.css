@@ -81,10 +81,15 @@
 
 .button.fav-btn:hover {
   background-color: var(--green-color-hover);
+  cursor: pointer;
 }
 
 .button.fav-btn:active {
   background-color: var(--green-color-active);
+}
+
+.button.unfav-btn-width {
+  width: 7.5rem;
 }
 
 .box-container {

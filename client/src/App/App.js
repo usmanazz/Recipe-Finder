@@ -5,6 +5,8 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
 import { NavBar } from "../components/NavBar/NavBar";
@@ -18,6 +20,7 @@ import { Signup } from "../pages/Signup/Signup";
 import { MyAccount } from "../pages/MyAccount/MyAccount";
 import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
 
+toast.configure();
 function App() {
   const [ingredients, setIngredients] = useState([]);
   const [text, setText] = useState("");
@@ -31,6 +34,8 @@ function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [count, setCount] = useState(1);
+
+  const [favoritesList, setFavoritesList] = useState([]);
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
@@ -105,6 +110,9 @@ function App() {
                 setRecipes={setRecipes}
                 count={count}
                 setCount={setCount}
+                isAuthenticated={isAuthenticated}
+                favoritesList={favoritesList}
+                setFavoritesList={setFavoritesList}
               />
             </Route>
             <Route
@@ -112,7 +120,13 @@ function App() {
               path="/account"
               render={(props) =>
                 isAuthenticated ? (
-                  <MyAccount {...props} setAuth={setAuth} />
+                  <MyAccount
+                    {...props}
+                    setAuth={setAuth}
+                    isAuthenticated={isAuthenticated}
+                    favoritesList={favoritesList}
+                    setFavoritesList={setFavoritesList}
+                  />
                 ) : (
                   <Redirect to="/login" />
                 )

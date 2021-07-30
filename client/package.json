@@ -17,6 +17,7 @@
     "react-scripts": "4.0.3",
     "react-tabs": "^3.2.2",
     "react-tabs-css": "^1.4.3",
+    "react-toastify": "^7.0.4",
     "web-vitals": "^1.1.1",
     "yup": "^0.32.9"
   },
