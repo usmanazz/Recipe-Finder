@@ -24,7 +24,7 @@ export const FilterModal = ({
   return (
     <Modal style={{ width: "100%" }} open={show} onClose={onCloseModal} center>
       <div className="modal-title-container">
-        <h2 className="modal-title">FILTERS:</h2>
+        <h2 className="modal-title">FILTERS</h2>
       </div>
 
       <div className="mobile-filters">

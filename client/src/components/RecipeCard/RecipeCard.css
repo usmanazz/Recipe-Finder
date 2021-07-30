@@ -26,3 +26,9 @@
 .recipecard-cooktime {
   font-size: 0.9rem;
 }
+
+@media screen and (max-width: 400px) {
+  .recipecard-image {
+    border-radius: 0;
+  }
+}
