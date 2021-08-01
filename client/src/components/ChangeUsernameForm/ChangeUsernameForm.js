@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 import "./ChangeUsernameForm.css";
 import { Link } from "react-router-dom";
@@ -34,10 +35,28 @@ export const ChangeUsernameForm = ({ setAuth }) => {
       const parseRes = await response.json();
       console.log(parseRes);
 
-      if (parseRes !== "Successfully changed username!") {
-        setResMessage(parseRes);
+      if (!parseRes.includes("Successfully")) {
+        // setResMessage(parseRes);
+        toast.error(parseRes, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+        });
       } else {
-        setResMessage(parseRes);
+        // setResMessage(parseRes);
+        toast.success(parseRes, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+        });
         resetForm({ values: "" });
       }
     } catch (err) {
@@ -75,7 +94,7 @@ export const ChangeUsernameForm = ({ setAuth }) => {
                   </div>
                 ) : null}
 
-                {/* Render res sent from backend */}
+                {/* Render res sent from backend
                 {resMessage ? (
                   <div
                     className={`main-error-message message ${
@@ -86,7 +105,7 @@ export const ChangeUsernameForm = ({ setAuth }) => {
                   >
                     {resMessage}
                   </div>
-                ) : null}
+                ) : null} */}
 
                 <Form className="change-username-form">
                   <div className="change-username-field">

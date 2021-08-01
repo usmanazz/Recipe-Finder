@@ -1,7 +1,7 @@
 .favorite-link {
   text-decoration: none;
   color: black;
-  transition: 0.2s ease-in;
+  transition: 0.1s;
 }
 
 .favorite-link:hover {

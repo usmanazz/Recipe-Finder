@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 import "./ChangePasswordForm.css";
 import { Link } from "react-router-dom";
@@ -32,10 +33,28 @@ export const ChangePasswordForm = ({ setAuth }) => {
 
       const parseRes = await response.json();
       if (parseRes === "Successfully changed password!") {
-        setResMessage(parseRes);
+        // setResMessage(parseRes);
+        toast.success(parseRes, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+        });
         resetForm({ values: "" });
       } else {
-        setResMessage(parseRes);
+        // setResMessage(parseRes);
+        toast.error(parseRes, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+        });
       }
     } catch (err) {
       console.log(err);

@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 import "./MyAccount.css";
 import { Tabs } from "../../components/Tabs/Tabs";
@@ -14,6 +15,15 @@ export const MyAccount = ({
     localStorage.removeItem("token");
     setFavoritesList([]);
     setAuth(false);
+    toast.success(`Successfully logged out!`, {
+      position: "top-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+    });
   };
 
   return (

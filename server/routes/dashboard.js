@@ -60,7 +60,7 @@ router.post("/change-username", authorization, async (req, res, next) => {
       newUsername,
       currentUsername,
     ]);
-    return res.json("Successfully changed username!");
+    return res.json(`Successfully changed username to ${newUsername}!`);
   } catch (err) {
     console.log(err.message);
     res.status(500).json("Server Error");

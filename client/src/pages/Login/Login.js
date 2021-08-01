@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 import "./Login.css";
 import { Link } from "react-router-dom";
@@ -36,9 +37,18 @@ export const Login = ({ setAuth }) => {
       if (!parseRes.token) {
         setErrorMessage(parseRes);
       } else {
-        // save token to local storage
+        // login successfull, save token to local storage
         localStorage.setItem("token", parseRes.token);
         setAuth(true);
+        toast.success(`Login Successful, Welcome back ${parseRes.user_name}!`, {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+        });
       }
     } catch (err) {
       console.log(err.message);

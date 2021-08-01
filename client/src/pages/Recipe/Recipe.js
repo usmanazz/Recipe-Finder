@@ -38,6 +38,11 @@ export const Recipe = ({
   // const { extendedIngredients, sourceUrl, analyzedInstructions } = recipe;
   // console.log("recipe", JSON.stringify(recipe));
 
+  const handleDelete = () => {
+    const newFavList = favoritesList.filter((fav) => fav.id !== recipe.id);
+    setFavoritesList(newFavList);
+  };
+
   useEffect(() => {
     // to ensure reset when visit homepage
     setCount((prev) => prev + 1);
@@ -155,6 +160,8 @@ export const Recipe = ({
       // user wants to unfavorite recipe
       else if (renderFavButton) {
         removeRecipeFromFavorites();
+        // to update fav list on account page
+        handleDelete();
         toast.success("Removed from Favorites!", {
           position: "top-right",
           autoClose: 2000,

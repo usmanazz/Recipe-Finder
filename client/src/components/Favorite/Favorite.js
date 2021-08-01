@@ -16,8 +16,7 @@ export const Favorite = ({
   const [showImage, setShowImage] = useState(true);
 
   const handleDelete = () => {
-    console.log(favorite.id);
-    const newFavList = favoritesList.filter((_, id) => id !== favorite.id);
+    const newFavList = favoritesList.filter((fav) => fav.id !== favorite.id);
     setFavoritesList(newFavList);
   };
 
@@ -30,10 +29,10 @@ export const Favorite = ({
     if (isAuthenticated) {
       // user wants to delete recipe from favorites
       await removeRecipeFromFavorites();
-      window.location = "/account";
-      console.log("after async function");
+      // window.location = "/account";
+
       // removes recipe from the displayed list
-      // handleDelete();
+      handleDelete();
       toast.success("Removed from Favorites!", {
         position: "top-right",
         autoClose: 2000,
