@@ -3,8 +3,8 @@
   flex-direction: column;
   position: relative;
   align-items: center;
-  /* margin-top: 6rem; */
   justify-content: center;
+  margin-top: 5rem;
 }
 
 .title-container h2 {
@@ -47,7 +47,7 @@
 
 @media screen and (max-width: 768px) {
   .About {
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
   }
 }
 

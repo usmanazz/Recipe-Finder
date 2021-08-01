@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  margin-top: 5rem;
 }
 
 /* .how-it-works-link {

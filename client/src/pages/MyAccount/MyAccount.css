@@ -3,8 +3,8 @@
   flex-direction: column;
   position: relative;
   align-items: center;
-  /* margin-top: 4rem; */
   justify-content: center;
+  margin-top: 4rem;
 }
 
 .account-box {
@@ -50,7 +50,7 @@
 
 @media screen and (max-width: 768px) {
   .MyAccount {
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
   }
 }
 

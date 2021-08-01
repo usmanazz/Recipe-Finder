@@ -65,7 +65,7 @@ function App() {
     <Router>
       <div className="App">
         <NavBar isAuthenticated={isAuthenticated} />
-        <div className="content-container">
+        <div /*className="content-container"*/>
           <ScrollToTop />
           <Switch>
             <Route exact path="/">
