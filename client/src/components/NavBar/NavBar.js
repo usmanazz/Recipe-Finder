@@ -105,7 +105,7 @@ export const NavBar = ({ isAuthenticated }) => {
 
       <div className="account-icon">
         <Link to="/login">
-          <img src={accountLogo} alt="Account button" />
+          <img src={accountLogo} onClick={closeSideNav} alt="Account button" />
         </Link>
       </div>
     </div>
