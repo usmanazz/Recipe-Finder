@@ -11,6 +11,7 @@ import { TryAgainScreen } from "../../components/TryAgainScreen/TryAgainScreen";
 
 export const Results = ({
   ingredients,
+  setIngredients,
   recipes,
   setRecipes,
   recipesToShow,
@@ -68,6 +69,10 @@ export const Results = ({
     if (recipes.length === 0) {
       setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
       setIsLoading(false);
+    }
+
+    if (ingredients.length == 0) {
+      setIngredients(JSON.parse(sessionStorage.getItem("ingredients") || "[]"));
     }
   }, []);
 

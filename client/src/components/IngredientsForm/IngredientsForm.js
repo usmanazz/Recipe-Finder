@@ -26,6 +26,7 @@ export const IngredientsForm = ({
       // setIsLoading(false);
 
       sessionStorage.setItem("recipes", JSON.stringify(recipes));
+      sessionStorage.setItem("ingredients", JSON.stringify(ingredients));
       setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
       // setIsLoading(false);
     });

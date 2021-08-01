@@ -92,6 +92,7 @@ function App() {
             <Route path="/results">
               <Results
                 ingredients={ingredients}
+                setIngredients={setIngredients}
                 recipes={recipes}
                 setRecipes={setRecipes}
                 recipesToShow={recipesToShow}

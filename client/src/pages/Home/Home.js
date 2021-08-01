@@ -23,6 +23,7 @@ export const Home = ({
   useEffect(() => {
     // reset localStorage
     sessionStorage.removeItem("recipes");
+    sessionStorage.removeItem("ingredients");
 
     // reset ingredients form when revisit Home page
     setIngredients([]);
