@@ -137,13 +137,13 @@ export const Results = ({
   );
 
   const mapRecipes = () => {
-    return caloriesFilteredRecipes.map((recipe) => (
+    return caloriesFilteredRecipes.map((recipe, idx) => (
       <Link
         className="recipecard-link"
         to={`/recipe/${recipe.id}`}
         key={recipe.id}
       >
-        <RecipeCard recipe={recipe} />
+        <RecipeCard key={idx} recipe={recipe} />
       </Link>
     ));
   };

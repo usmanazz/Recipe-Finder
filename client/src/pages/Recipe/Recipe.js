@@ -224,8 +224,8 @@ export const Recipe = ({
           <div className="scroll-container">
             {recipe.extendedIngredients ? (
               <ol className="recipe-page-counter">
-                {recipe.extendedIngredients.map((ingredient) => {
-                  return <li key={ingredient.id}>{ingredient.original}</li>;
+                {recipe.extendedIngredients.map((ingredient, idx) => {
+                  return <li key={idx}>{ingredient.original}</li>;
                 })}
               </ol>
             ) : (

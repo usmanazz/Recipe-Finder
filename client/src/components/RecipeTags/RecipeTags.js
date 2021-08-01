@@ -8,9 +8,19 @@ export const RecipeTags = ({ recipe }) => {
     <div className="RecipeTags">
       <ul className="recipe-tag">
         {cuisines
-          ? cuisines.map((cuisine) => <li className="tag">{cuisine}</li>)
+          ? cuisines.map((cuisine, idx) => (
+              <li key={idx} className="tag">
+                {cuisine}
+              </li>
+            ))
           : null}
-        {diets ? diets.map((diet) => <li className="tag">{diet}</li>) : null}
+        {diets
+          ? diets.map((diet, idx) => (
+              <li key={idx} className="tag">
+                {diet}
+              </li>
+            ))
+          : null}
       </ul>
     </div>
   );
