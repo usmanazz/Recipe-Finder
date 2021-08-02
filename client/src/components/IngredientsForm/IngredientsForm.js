@@ -5,6 +5,7 @@ import "./IngredientsForm.css";
 import { AddBar } from "../AddBar/AddBar";
 import { IngredientList } from "../IngredientList/IngredientList";
 import Spoonacular from "../../util/Spoonacular";
+import { trackPromise } from "react-promise-tracker";
 
 export const IngredientsForm = ({
   ingredients,
@@ -21,15 +22,17 @@ export const IngredientsForm = ({
   setIsLoading,
 }) => {
   const handleSubmit = () => {
-    Spoonacular.searchRecipes(ingredients).then((recipes) => {
-      // setRecipes(recipes);
-      // setIsLoading(false);
+    trackPromise(
+      Spoonacular.searchRecipes(ingredients).then((recipes) => {
+        // setRecipes(recipes);
+        // setIsLoading(false);
 
-      sessionStorage.setItem("recipes", JSON.stringify(recipes));
-      sessionStorage.setItem("ingredients", JSON.stringify(ingredients));
-      setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
-      // setIsLoading(false);
-    });
+        sessionStorage.setItem("recipes", JSON.stringify(recipes));
+        sessionStorage.setItem("ingredients", JSON.stringify(ingredients));
+        setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
+        // setIsLoading(false);
+      })
+    );
   };
 
   useEffect(() => {

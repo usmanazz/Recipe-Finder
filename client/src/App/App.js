@@ -19,6 +19,7 @@ import { Login } from "../pages/Login/Login";
 import { Signup } from "../pages/Signup/Signup";
 import { MyAccount } from "../pages/MyAccount/MyAccount";
 import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
+import { LoadingScreen } from "../components/LoadingScreen/LoadingScreen";
 
 toast.configure();
 function App() {
@@ -30,12 +31,12 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [recipesToShow, setRecipesToShow] = useState([]);
   const [next, setNext] = useState(2);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [count, setCount] = useState(1);
-
   const [favoritesList, setFavoritesList] = useState([]);
+  const [selectedFilterDisplayed, setSelectedFilterDisplayed] = useState(false);
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
@@ -65,6 +66,7 @@ function App() {
     <Router>
       <div className="App">
         <NavBar isAuthenticated={isAuthenticated} />
+        <LoadingScreen />
         <div /*className="content-container"*/>
           <ScrollToTop />
           <Switch>
@@ -80,8 +82,8 @@ function App() {
                 setErrors={setErrors}
                 recipes={recipes}
                 setRecipes={setRecipes}
-                isLoading={isLoading}
-                setIsLoading={setIsLoading}
+                // isLoading={isLoading}
+                // setIsLoading={setIsLoading}
                 count={count}
                 setCount={setCount}
               />
@@ -99,10 +101,12 @@ function App() {
                 setRecipesToShow={setRecipesToShow}
                 next={next}
                 setNext={setNext}
-                isLoading={isLoading}
-                setIsLoading={setIsLoading}
+                // isLoading={isLoading}
+                // setIsLoading={setIsLoading}
                 count={count}
                 setCount={setCount}
+                selectedFilterDisplayed={selectedFilterDisplayed}
+                setSelectedFilterDisplayed={setSelectedFilterDisplayed}
               />
             </Route>
             <Route path="/recipe/:id">

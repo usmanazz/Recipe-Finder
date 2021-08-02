@@ -22,6 +22,8 @@ export const Results = ({
   setIsLoading,
   count,
   setCount,
+  selectedFilterDisplayed,
+  setSelectedFilterDisplayed,
 }) => {
   const recipesPerPage = 2;
   const [selectedRadio, setSelectedRadio] = useState("");
@@ -66,9 +68,9 @@ export const Results = ({
     // to ensure reset on when visit homepage
     setCount((prev) => prev + 1);
 
-    if (recipes.length === 0) {
+    if (/*isLoading &&*/ recipes.length === 0) {
       setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
-      setIsLoading(false);
+      // setIsLoading(false);
     }
 
     if (ingredients.length == 0) {
@@ -153,13 +155,6 @@ export const Results = ({
     ));
   };
 
-  if (isLoading) {
-    return <TryAgainScreen />;
-  } else if (isLoading && recipes.length === 0) {
-    return <TryAgainScreen />;
-  } else if (!isLoading && recipes.length === 0) {
-    return <LoadingScreen />;
-  }
   return (
     <div className="Results">
       <div className="results-title-container">
@@ -194,10 +189,12 @@ export const Results = ({
           setNumOfIngredients={setNumOfIngredients}
           calories={calories}
           setCalories={setCalories}
+          selectedFilterDisplayed={selectedFilterDisplayed}
+          setSelectedFilterDisplayed={setSelectedFilterDisplayed}
         />
       </div>
 
-      {caloriesFilteredRecipes.length > 0 ? (
+      {caloriesFilteredRecipes.length > 0 && recipes.length > 0 ? (
         <>
           <div className="recipe-cards-container">{mapRecipes()}</div>
 
@@ -214,10 +211,14 @@ export const Results = ({
             </p>
           </div>
         </>
+      ) : caloriesFilteredRecipes.length === 0 && recipes.length > 0 ? (
+        <p className="no-filter-selection-message">
+          No results for the provided filters, please try a different filter
+          combination.
+        </p>
       ) : (
         <p className="no-filter-selection-message">
-          We couldn't find anything for your filter selection. Please try
-          another combination.
+          No Results, please search again.
         </p>
       )}
     </div>

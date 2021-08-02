@@ -2,6 +2,7 @@
   position: fixed;
   z-index: 50;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -13,6 +14,26 @@
 }
 
 .loading-text {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.loader {
+  position: relative;
+  width: 4em;
+  height: 4em;
+  border: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-left: 1.1em solid #000000;
+  border-radius: 50%;
+  animation: load8 1.1s infinite linear;
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

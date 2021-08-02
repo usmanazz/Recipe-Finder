@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./SelectedFilter.css";
 import deleteIcon from "./baseline_clear_black_24dp.png";
@@ -13,7 +13,13 @@ export const SelectedFilter = ({
   setNumOfIngredients,
   calories,
   setCalories,
+  selectedFilterDisplayed,
+  setSelectedFilterDisplayed,
 }) => {
+  useEffect(() => {
+    handleSelectedFilterDisplayed();
+  }, []);
+
   const handleRemoveAlphaOrderFilter = () => {
     setSelectedRadio("");
   };
@@ -35,6 +41,22 @@ export const SelectedFilter = ({
     setCookTime([0, 200]);
     setNumOfIngredients([0, 20]);
     setCalories([0, 2000]);
+  };
+
+  const handleSelectedFilterDisplayed = () => {
+    if (
+      selectedRadio !== "" ||
+      cookTime[0] !== 0 ||
+      cookTime[1] !== 200 ||
+      numOfIngredients[0] !== 0 ||
+      numOfIngredients[1] !== 20 ||
+      calories[0] !== 0 ||
+      calories[1] !== 2000
+    ) {
+      setSelectedFilterDisplayed(true);
+    } else {
+      setSelectedFilterDisplayed(false);
+    }
   };
 
   if (
