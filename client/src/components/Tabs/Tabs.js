@@ -44,7 +44,9 @@ export const Tabs = ({ isAuthenticated, favoritesList, setFavoritesList }) => {
           }
         >
           {favoritesList.length !== 0 && (
-            <h2>{favoritesList.length} Favorites</h2>
+            <h2 className="favorites-count">
+              {favoritesList.length} Favorites
+            </h2>
           )}
           <FavoriteList
             isAuthenticated={isAuthenticated}

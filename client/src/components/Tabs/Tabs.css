@@ -105,6 +105,10 @@ button {
   /* flex-wrap: wrap; */
 }
 
+.favorites-count {
+  margin-bottom: 1.5rem;
+}
+
 @media screen and (max-width: 980px) {
   .active-content-tab1,
   .active-content-tab2 {

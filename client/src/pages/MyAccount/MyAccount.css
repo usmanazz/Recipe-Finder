@@ -4,7 +4,7 @@
   position: relative;
   align-items: center;
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: 5rem;
 }
 
 .account-box {
@@ -13,7 +13,7 @@
   background: #ffffff;
   box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   padding: 1rem 1.3rem;
   line-height: 2.5rem;
   font-weight: 600;
@@ -23,12 +23,19 @@
 .box-sub-titles {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.user-title {
+  font-weight: 800;
+  text-decoration: underline;
+  letter-spacing: 0.08rem;
 }
 
 .my-account-title {
   font-family: var(--segoeUI-font);
   font-weight: 800;
-  text-decoration: underline;
+  font-size: 2rem;
 }
 
 .logout-title {
@@ -36,10 +43,12 @@
   font-weight: 700;
   text-decoration: underline;
   color: #6e6e6e;
+  cursor: pointer;
 }
 
 .logout-title:hover {
-  cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 
 @media screen and (min-width: 1440px) {

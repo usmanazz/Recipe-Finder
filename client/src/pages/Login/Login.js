@@ -39,6 +39,7 @@ export const Login = ({ setAuth }) => {
       } else {
         // login successfull, save token to local storage
         localStorage.setItem("token", parseRes.token);
+        localStorage.setItem("userName", parseRes.user_name);
         setAuth(true);
         toast.success(`Login Successful, Welcome back ${parseRes.user_name}!`, {
           position: "top-right",
