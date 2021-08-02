@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -6,9 +6,16 @@ import { toast } from "react-toastify";
 import "./ChangePasswordForm.css";
 import { Link } from "react-router-dom";
 
-export const ChangePasswordForm = ({ setAuth }) => {
-  const [renderError, setRenderError] = useState(false);
-  const [resMessage, setResMessage] = useState("");
+export const ChangePasswordForm = ({
+  passwordFormikRef,
+  renderPasswordError,
+  setRenderPasswordError,
+  passwordResMessage,
+  setPasswordResMessage,
+}) => {
+  // const [renderError, setRenderError] = useState(false);
+  // const [resMessage, setResMessage] = useState("");
+  // const formikRef = useRef();
 
   const initialValues = {
     currentPassword: "",
@@ -45,16 +52,16 @@ export const ChangePasswordForm = ({ setAuth }) => {
         });
         resetForm({ values: "" });
       } else {
-        // setResMessage(parseRes);
-        toast.error(parseRes, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-        });
+        setPasswordResMessage(parseRes);
+        // toast.error(parseRes, {
+        //   position: "top-right",
+        //   autoClose: 3000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: false,
+        //   draggable: false,
+        //   progress: undefined,
+        // });
       }
     } catch (err) {
       console.log(err);
@@ -78,6 +85,7 @@ export const ChangePasswordForm = ({ setAuth }) => {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
+          innerRef={passwordFormikRef}
         >
           {(formik) => {
             const { currentPassword, newPassword } = formik.values;
@@ -85,22 +93,16 @@ export const ChangePasswordForm = ({ setAuth }) => {
               <div>
                 <h3 className="change-username-title">Change Password</h3>
 
-                {renderError ? (
+                {renderPasswordError ? (
                   <div className="main-error-message message error-color">
                     Please fill out all of the fields
                   </div>
                 ) : null}
 
                 {/* Render res sent from backend */}
-                {resMessage ? (
-                  <div
-                    className={`main-error-message message ${
-                      resMessage === "Successfully changed password!"
-                        ? "success-color"
-                        : "error-color"
-                    }`}
-                  >
-                    {resMessage}
+                {passwordResMessage ? (
+                  <div className="main-error-message message error-color">
+                    {passwordResMessage}
                   </div>
                 ) : null}
 
@@ -111,7 +113,15 @@ export const ChangePasswordForm = ({ setAuth }) => {
                       type="password"
                       id="currentPassword"
                       name="currentPassword"
-                    />
+                    >
+                      {({ field, meta: { touched, error } }) => (
+                        <input
+                          className={touched && error ? "invalid" : ""}
+                          {...field}
+                          type="password"
+                        />
+                      )}
+                    </Field>
                     <ErrorMessage name="currentPassword">
                       {(errMessage) => (
                         <div className="error-message">{errMessage}</div>
@@ -121,11 +131,15 @@ export const ChangePasswordForm = ({ setAuth }) => {
 
                   <div className="change-username-field">
                     <label htmlFor="name">NEW PASSWORD</label>
-                    <Field
-                      type="password"
-                      id="newPassword"
-                      name="newPassword"
-                    />
+                    <Field type="password" id="newPassword" name="newPassword">
+                      {({ field, meta: { touched, error } }) => (
+                        <input
+                          className={touched && error ? "invalid" : ""}
+                          {...field}
+                          type="password"
+                        />
+                      )}
+                    </Field>
                     <ErrorMessage name="newPassword">
                       {(errMessage) => (
                         <div className="error-message">{errMessage}</div>
@@ -138,9 +152,9 @@ export const ChangePasswordForm = ({ setAuth }) => {
                     className="button create-account-btn"
                     onClick={() => {
                       !formik.isValid || !currentPassword || !newPassword
-                        ? setRenderError(true)
-                        : setRenderError(false);
-                      setResMessage("");
+                        ? setRenderPasswordError(true)
+                        : setRenderPasswordError(false);
+                      setPasswordResMessage("");
                     }}
                   >
                     CHANGE PASSWORD

@@ -69,24 +69,39 @@ export const Signup = ({ setAuth }) => {
               <div>
                 <h3 className="signup-title">CREATE AN ACCOUNT</h3>
 
-                {/* Field errors */}
-                {renderError ? (
+                {/* Field and credentials errors */}
+                {renderError && errorMessage ? (
                   <div className="main-error-message error-message">
                     Please fill out all of the fields
                   </div>
-                ) : null}
-
-                {/* Error signing up */}
-                {errorMessage ? (
+                ) : renderError && !errorMessage ? (
+                  <div className="main-error-message error-message">
+                    Please fill out all of the fields
+                  </div>
+                ) : errorMessage && !renderError ? (
                   <div className="main-error-message error-message">
                     {errorMessage}
                   </div>
                 ) : null}
 
+                {/* Error signing up */}
+                {/* {errorMessage ? (
+                  <div className="main-error-message error-message">
+                    {errorMessage}
+                  </div>
+                ) : null} */}
+
                 <Form className="signup-form">
                   <div className="signup-field">
                     <label htmlFor="name">USERNAME</label>
-                    <Field type="text" id="name" name="name" />
+                    <Field type="text" id="name" name="name">
+                      {({ field, meta: { touched, error } }) => (
+                        <input
+                          className={touched && error ? "invalid" : ""}
+                          {...field}
+                        />
+                      )}
+                    </Field>
                     <ErrorMessage name="name">
                       {(errMessage) => (
                         <div className="error-message">{errMessage}</div>
@@ -96,7 +111,14 @@ export const Signup = ({ setAuth }) => {
 
                   <div className="signup-field">
                     <label htmlFor="email">EMAIL</label>
-                    <Field type="text" id="email" name="email" />
+                    <Field type="text" id="email" name="email">
+                      {({ field, meta: { touched, error } }) => (
+                        <input
+                          className={touched && error ? "invalid" : ""}
+                          {...field}
+                        />
+                      )}
+                    </Field>
                     <ErrorMessage name="email">
                       {(errMessage) => (
                         <div className="error-message">{errMessage}</div>
@@ -106,7 +128,15 @@ export const Signup = ({ setAuth }) => {
 
                   <div className="signup-field">
                     <label htmlFor="password">PASSWORD</label>
-                    <Field type="password" id="password" name="password" />
+                    <Field type="password" id="password" name="password">
+                      {({ field, meta: { touched, error } }) => (
+                        <input
+                          className={touched && error ? "invalid" : ""}
+                          {...field}
+                          type="password"
+                        />
+                      )}
+                    </Field>
                     <ErrorMessage name="password">
                       {(errMessage) => (
                         <div className="error-message">{errMessage}</div>

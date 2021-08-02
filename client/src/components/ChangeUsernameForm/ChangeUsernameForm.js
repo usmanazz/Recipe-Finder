@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -7,14 +7,29 @@ import "./ChangeUsernameForm.css";
 import { Link } from "react-router-dom";
 // import { use } from "../../../../server/routes/jwtAuth";
 
-export const ChangeUsernameForm = ({ setAuth }) => {
-  const [renderError, setRenderError] = useState(false);
-  const [resMessage, setResMessage] = useState("");
+export const ChangeUsernameForm = ({
+  setAuth,
+  usernameFormikRef,
+  renderUsernameError,
+  setRenderUsernameError,
+  usernameResMessage,
+  setUsernameResMessage,
+}) => {
+  // const [renderError, setRenderError] = useState(false);
+  // const [resMessage, setResMessage] = useState("");
+  // const formikRef = useRef();
 
   const initialValues = {
     currentUsername: "",
     newUsername: "",
   };
+
+  // useEffect(() => {
+  //   if (!formikRef.current) {
+  //     console.log("PEEEEEEN");
+  //     formikRef.current.resetForm();
+  //   }
+  // });
 
   const onSubmit = async (values, { resetForm }) => {
     // console.log("Form data ", values);
@@ -36,16 +51,16 @@ export const ChangeUsernameForm = ({ setAuth }) => {
       console.log(parseRes);
 
       if (!parseRes.includes("Successfully")) {
-        // setResMessage(parseRes);
-        toast.error(parseRes, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-        });
+        setUsernameResMessage(parseRes);
+        // toast.error(parseRes, {
+        //   position: "top-right",
+        //   autoClose: 3000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: false,
+        //   draggable: false,
+        //   progress: undefined,
+        // });
       } else {
         // setResMessage(parseRes);
         toast.success(parseRes, {
@@ -76,6 +91,7 @@ export const ChangeUsernameForm = ({ setAuth }) => {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
+          innerRef={usernameFormikRef}
         >
           {(formik) => {
             {
@@ -87,26 +103,18 @@ export const ChangeUsernameForm = ({ setAuth }) => {
               <div>
                 <h3 className="change-username-title">Change Username</h3>
 
-                {/* {console.log(renderError)} */}
-                {renderError ? (
+                {renderUsernameError ? (
                   <div className="main-error-message message error-color">
                     Please fill out all of the fields
                   </div>
                 ) : null}
 
-                {/* Render res sent from backend
-                {resMessage ? (
-                  <div
-                    className={`main-error-message message ${
-                      resMessage === "Successfully changed username!"
-                        ? "success-color"
-                        : "error-color"
-                    }`}
-                  >
-                    {resMessage}
+                {/* Render res sent from backend */}
+                {usernameResMessage ? (
+                  <div className="main-error-message message error-color">
+                    {usernameResMessage}
                   </div>
-                ) : null} */}
-
+                ) : null}
                 <Form className="change-username-form">
                   <div className="change-username-field">
                     <label htmlFor="name">CURRENT USERNAME</label>
@@ -114,7 +122,14 @@ export const ChangeUsernameForm = ({ setAuth }) => {
                       type="text"
                       id="currentUsername"
                       name="currentUsername"
-                    />
+                    >
+                      {({ field, meta: { touched, error } }) => (
+                        <input
+                          className={touched && error ? "invalid" : ""}
+                          {...field}
+                        />
+                      )}
+                    </Field>
                     <ErrorMessage name="currentUsername">
                       {(errMessage) => (
                         <div className="error-message">{errMessage}</div>
@@ -124,7 +139,14 @@ export const ChangeUsernameForm = ({ setAuth }) => {
 
                   <div className="change-username-field">
                     <label htmlFor="name">NEW USERNAME</label>
-                    <Field type="text" id="newUsername" name="newUsername" />
+                    <Field type="text" id="newUsername" name="newUsername">
+                      {({ field, meta: { touched, error } }) => (
+                        <input
+                          className={touched && error ? "invalid" : ""}
+                          {...field}
+                        />
+                      )}
+                    </Field>
                     <ErrorMessage name="newUsername">
                       {(errMessage) => (
                         <div className="error-message">{errMessage}</div>
@@ -137,9 +159,9 @@ export const ChangeUsernameForm = ({ setAuth }) => {
                     className="button create-account-btn"
                     onClick={() => {
                       !formik.isValid || !currentUsername || !newUsername
-                        ? setRenderError(true)
-                        : setRenderError(false);
-                      setResMessage("");
+                        ? setRenderUsernameError(true)
+                        : setRenderUsernameError(false);
+                      setUsernameResMessage("");
                     }}
                   >
                     CHANGE USERNAME

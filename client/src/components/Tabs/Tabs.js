@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./Tabs.css";
 
 import { ChangeUsernameForm } from "../ChangeUsernameForm/ChangeUsernameForm";
@@ -7,6 +7,20 @@ import { FavoriteList } from "../FavoriteList/FavoriteList";
 
 export const Tabs = ({ isAuthenticated, favoritesList, setFavoritesList }) => {
   const [toggleState, setToggleState] = useState(1);
+  // const [usernameValues, setUsernameValues] = useState({
+  //   currentUsername: "",
+  //   newUsername: "",
+  // });
+  // const [passwordValues, setPasswordValues] = useState({
+  //   currentPassword: "",
+  //   newPassword: "",
+  // });
+  const [renderUsernameError, setRenderUsernameError] = useState(false);
+  const [usernameResMessage, setUsernameResMessage] = useState("");
+  const [renderPasswordError, setRenderPasswordError] = useState(false);
+  const [passwordResMessage, setPasswordResMessage] = useState("");
+  const usernameFormikRef = useRef();
+  const passwordFormikRef = useRef();
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -21,7 +35,19 @@ export const Tabs = ({ isAuthenticated, favoritesList, setFavoritesList }) => {
               ? "tabs active-tabs favorite-tab"
               : "tabs favorite-tab account-tab"
           }
-          onClick={() => toggleTab(1)}
+          onClick={() => {
+            toggleTab(1);
+
+            // reset changeUserame form fields
+            usernameFormikRef.current.resetForm();
+            setRenderUsernameError(false);
+            setUsernameResMessage("");
+
+            // reset changePassword form fields
+            passwordFormikRef.current.resetForm();
+            setRenderPasswordError(false);
+            setPasswordResMessage("");
+          }}
         >
           FAVORITES
         </button>
@@ -60,8 +86,20 @@ export const Tabs = ({ isAuthenticated, favoritesList, setFavoritesList }) => {
             toggleState === 2 ? "content active-content-tab1" : "content"
           }
         >
-          <ChangeUsernameForm />
-          <ChangePasswordForm />
+          <ChangeUsernameForm
+            usernameFormikRef={usernameFormikRef}
+            renderUsernameError={renderUsernameError}
+            setRenderUsernameError={setRenderUsernameError}
+            usernameResMessage={usernameResMessage}
+            setUsernameResMessage={setUsernameResMessage}
+          />
+          <ChangePasswordForm
+            passwordFormikRef={passwordFormikRef}
+            renderPasswordError={renderPasswordError}
+            setRenderPasswordError={setRenderPasswordError}
+            passwordResMessage={passwordResMessage}
+            setPasswordResMessage={setPasswordResMessage}
+          />
         </div>
       </div>
     </div>

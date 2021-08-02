@@ -65,12 +65,35 @@ export const Login = ({ setAuth }) => {
           onSubmit={onSubmit}
         >
           {(formik) => {
-            const { email, password } = formik.values;
+            const { email, password, touched, errors } = formik.values;
+            console.log(formik);
             return (
               <div>
                 <h3 className="login-title">LOGIN INTO MY ACCOUNT</h3>
 
+                {/* Field errors */}
+                {/* {renderError ? (
+                  <div className="main-error-message error-message">
+                    Please fill out all of the fields
+                  </div>
+                ) : null}
+
                 {errorMessage ? (
+                  <div className="main-error-message error-message">
+                    {errorMessage}
+                  </div>
+                ) : null} */}
+
+                {/* Field and credentials errors */}
+                {renderError && errorMessage ? (
+                  <div className="main-error-message error-message">
+                    Please fill out all of the fields
+                  </div>
+                ) : renderError && !errorMessage ? (
+                  <div className="main-error-message error-message">
+                    Please fill out all of the fields
+                  </div>
+                ) : errorMessage && !renderError ? (
                   <div className="main-error-message error-message">
                     {errorMessage}
                   </div>
@@ -79,7 +102,14 @@ export const Login = ({ setAuth }) => {
                 <Form className="login-form">
                   <div className="login-field">
                     <label htmlFor="email">EMAIL</label>
-                    <Field type="text" id="email" name="email" />
+                    <Field type="text" id="email" name="email">
+                      {({ field, meta: { touched, error } }) => (
+                        <input
+                          className={touched && error ? "invalid" : ""}
+                          {...field}
+                        />
+                      )}
+                    </Field>
                     <ErrorMessage name="email">
                       {(errMessage) => (
                         <div className="error-message">{errMessage}</div>
@@ -89,7 +119,15 @@ export const Login = ({ setAuth }) => {
 
                   <div className="login-field">
                     <label htmlFor="password">PASSWORD</label>
-                    <Field type="password" id="password" name="password" />
+                    <Field type="password" id="password" name="password">
+                      {({ field, meta: { touched, error } }) => (
+                        <input
+                          className={touched && error ? "invalid" : ""}
+                          type="password"
+                          {...field}
+                        />
+                      )}
+                    </Field>
                     <ErrorMessage name="password">
                       {(errMessage) => (
                         <div className="error-message">{errMessage}</div>

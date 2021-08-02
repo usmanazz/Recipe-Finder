@@ -63,6 +63,10 @@
   text-transform: lowercase;
 }
 
+.invalid {
+  border: 1px solid #bf2e35 !important;
+}
+
 .button.login-btn {
   display: flex;
   justify-content: center;
