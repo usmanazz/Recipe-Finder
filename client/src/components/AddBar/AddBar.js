@@ -42,9 +42,9 @@ export const AddBar = ({
     }
 
     if (field) {
-      if (!field.match(/^[a-zA-Z]+$/)) {
+      if (!field.match(/^[a-zA-Z_]+( [a-zA-Z_]+)*$/)) {
         formIsValid = false;
-        err["name"] = "Invalid Format. Letters only!";
+        err["name"] = "Invalid Format. Word(s) only!";
       }
     }
 
