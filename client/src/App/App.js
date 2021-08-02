@@ -38,12 +38,26 @@ function App() {
   const [favoritesList, setFavoritesList] = useState([]);
   const [selectedFilterDisplayed, setSelectedFilterDisplayed] = useState(false);
 
+  // var represents 10 min to check if user is auth frequently
+  const MINUTE_MS = 60000 * 10;
+
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
 
   useEffect(() => {
     isUserAuth();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("runs isAuth every 10 minutes");
+      isUserAuth();
+    }, MINUTE_MS);
+
+    // This represents the unmount function, in which you need to clear
+    // your interval to prevent memory leaks.
+    return () => clearInterval(interval);
   }, []);
 
   const isUserAuth = async () => {
