@@ -46,6 +46,8 @@ export const Recipe = ({
   useEffect(() => {
     // to ensure reset when visit homepage
     setCount((prev) => prev + 1);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // render favorite button based on user's favorites
@@ -66,6 +68,8 @@ export const Recipe = ({
     }
 
     fetchData();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // api call to get user's list of favorites
@@ -94,17 +98,14 @@ export const Recipe = ({
         recipeInfo: recipe,
       };
 
-      const response = await fetch(
-        "http://localhost:5000/dashboard/add-favorite",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            token: localStorage.token,
-          },
-          body: JSON.stringify(body),
-        }
-      );
+      await fetch("http://localhost:5000/dashboard/add-favorite", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.token,
+        },
+        body: JSON.stringify(body),
+      });
 
       setRenderFavButton(true);
     } catch (err) {
@@ -119,17 +120,14 @@ export const Recipe = ({
         recipeId: recipe.id,
       };
 
-      const response = await fetch(
-        "http://localhost:5000/dashboard/remove-favorite",
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            token: localStorage.token,
-          },
-          body: JSON.stringify(body),
-        }
-      );
+      await fetch("http://localhost:5000/dashboard/remove-favorite", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.token,
+        },
+        body: JSON.stringify(body),
+      });
 
       setRenderFavButton(false);
     } catch (err) {

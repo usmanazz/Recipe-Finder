@@ -32,6 +32,8 @@ export const Home = ({
     if (count > 1) {
       window.location = "/";
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

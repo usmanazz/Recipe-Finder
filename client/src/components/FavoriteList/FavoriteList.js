@@ -23,6 +23,8 @@ export const FavoriteList = ({
     }
 
     fetchData();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getFavorites = async () => {

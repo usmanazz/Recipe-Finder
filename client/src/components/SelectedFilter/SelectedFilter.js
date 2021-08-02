@@ -18,6 +18,8 @@ export const SelectedFilter = ({
 }) => {
   useEffect(() => {
     handleSelectedFilterDisplayed();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleRemoveAlphaOrderFilter = () => {

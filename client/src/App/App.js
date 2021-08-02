@@ -47,6 +47,7 @@ function App() {
 
   useEffect(() => {
     isUserAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -58,6 +59,8 @@ function App() {
     // This represents the unmount function, in which you need to clear
     // your interval to prevent memory leaks.
     return () => clearInterval(interval);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isUserAuth = async () => {

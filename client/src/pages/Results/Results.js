@@ -74,10 +74,14 @@ export const Results = ({
     if (ingredients.length === 0) {
       setIngredients(JSON.parse(sessionStorage.getItem("ingredients") || "[]"));
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     loopWithSlice(0, recipesPerPage);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipes]);
 
   const loopWithSlice = (start, end) => {
