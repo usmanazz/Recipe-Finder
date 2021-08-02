@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 const jwtAuthRouter = require("./routes/jwtAuth");
 const dashboardRouter = require("./routes/dashboard");

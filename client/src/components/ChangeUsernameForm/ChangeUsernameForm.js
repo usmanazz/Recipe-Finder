@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 
 import "./ChangeUsernameForm.css";
-// import { use } from "../../../../server/routes/jwtAuth";
 
 export const ChangeUsernameForm = ({
   setAuth,
@@ -16,18 +15,12 @@ export const ChangeUsernameForm = ({
   userName,
   setUserName,
 }) => {
-  // const [renderError, setRenderError] = useState(false);
-  // const [resMessage, setResMessage] = useState("");
-  // const formikRef = useRef();
-
   const initialValues = {
     currentUsername: "",
     newUsername: "",
   };
 
   const onSubmit = async (values, { resetForm }) => {
-    // console.log("Form data ", values);
-
     try {
       const response = await fetch(
         "http://localhost:5000/dashboard/change-username",
@@ -42,21 +35,10 @@ export const ChangeUsernameForm = ({
       );
 
       const parseRes = await response.json();
-      console.log(parseRes);
 
       if (!parseRes.includes("Successfully")) {
         setUsernameResMessage(parseRes);
-        // toast.error(parseRes, {
-        //   position: "top-right",
-        //   autoClose: 3000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: false,
-        //   draggable: false,
-        //   progress: undefined,
-        // });
       } else {
-        // setResMessage(parseRes);
         toast.success(parseRes, {
           position: "top-right",
           autoClose: 3000,
@@ -67,12 +49,11 @@ export const ChangeUsernameForm = ({
           progress: undefined,
         });
         localStorage.setItem("userName", values.newUsername);
-        console.log(values.newUsername);
         setUserName(localStorage.getItem("userName"));
         resetForm({ values: "" });
       }
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
     }
   };
 

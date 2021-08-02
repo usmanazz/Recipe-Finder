@@ -11,8 +11,6 @@ import { SessionExpiredScreen } from "../../components/SessionExpiredScreen/Sess
 
 export const Recipe = ({
   recipes,
-  setRecipes,
-  count,
   setCount,
   isAuthenticated,
   favoritesList,
@@ -31,12 +29,7 @@ export const Recipe = ({
       : null;
 
   const recipe = userFavRecipe ? userFavRecipe : resultsRecipe;
-  // const recipe = recipes.find((recipe) => recipe.id === parseInt(id));
   const [renderFavButton, setRenderFavButton] = useState(false);
-  // const storageRecipes = JSON.parse(sessionStorage.getItem("recipes"));
-  // const recipe = storageRecipes.find((recipe) => recipe.id === parseInt(id));
-  // const { extendedIngredients, sourceUrl, analyzedInstructions } = recipe;
-  // console.log("recipe", JSON.stringify(recipe));
 
   const handleDelete = () => {
     const newFavList = favoritesList.filter((fav) => fav.id !== recipe.id);
@@ -136,8 +129,6 @@ export const Recipe = ({
   };
 
   const handleFavClick = () => {
-    console.log("favorited!");
-
     // user needs to be logged in to favorite/unfavorite
     if (isAuthenticated) {
       // user wants to favorite recipe
@@ -169,14 +160,6 @@ export const Recipe = ({
         });
       }
     } else {
-      // toast("Log In to Save Recipe!", {
-      //   autoClose: 3000,
-      //   style: {
-      //     backgroundColor: "black",
-      //     color: "white",
-      //   },
-      //   progressStyle: { background: "white" },
-      // });
       toast.error("Log In to Save Recipe!", {
         position: "top-right",
         autoClose: 3000,

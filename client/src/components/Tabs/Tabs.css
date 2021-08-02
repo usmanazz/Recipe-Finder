@@ -4,10 +4,8 @@
   position: relative;
   width: 100%;
   height: 85%;
-  /* background: #f1f1f1; */
   margin: 1rem auto 0;
   word-break: break-all;
-  /* border: 1px solid rgba(0, 0, 0, 0.274); */
 }
 
 .bloc-tabs {
@@ -15,12 +13,9 @@
   justify-content: space-evenly;
 }
 .tabs {
-  /* padding: 0.9rem 0.6rem; */
   text-align: center;
   width: 50%;
-  /* background: rgba(128, 128, 128, 0.075); */
   cursor: pointer;
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.274); */
   box-sizing: content-box;
   position: relative;
   outline: none;
@@ -41,18 +36,6 @@
   background: rgb(245, 245, 245);
   border-bottom: 1px solid transparent;
   opacity: unset;
-}
-
-.active-tabs::before {
-  /* content: "";
-  display: block;
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% + 2px);
-  height: 5px;
-  background: rgb(88, 147, 241); */
 }
 
 .account-tab {
@@ -96,13 +79,11 @@ button {
 .active-content-tab1 {
   display: flex;
   justify-content: space-evenly;
-  /* flex-wrap: wrap; */
 }
 
 .active-content-tab2 {
   display: block;
   justify-content: space-evenly;
-  /* flex-wrap: wrap; */
 }
 
 .favorites-count {
@@ -123,12 +104,6 @@ button {
     font-size: 1.2rem;
   }
 }
-
-/* @media screen and (max-width: 460px) {
-  .content {
-    padding: 20px 0;
-  }
-} */
 
 @media screen and (max-width: 455px) {
   .tabs {

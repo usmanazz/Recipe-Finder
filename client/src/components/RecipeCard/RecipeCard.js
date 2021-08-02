@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./RecipeCard.css";
 
 export const RecipeCard = ({ recipe, recipee }) => {
@@ -7,6 +6,7 @@ export const RecipeCard = ({ recipe, recipee }) => {
     recipe.nutrition.nutrients.find((element) => element.name === "Calories")
       .amount
   );
+
   return (
     <div className="RecipeCard">
       <div

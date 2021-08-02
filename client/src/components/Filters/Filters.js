@@ -19,10 +19,6 @@ export const Filters = ({
 }) => {
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener("resize", handleCloseFilter);
-  }, []);
-
   const handleFilterNSort = () => {
     setShow(true);
   };
@@ -30,6 +26,10 @@ export const Filters = ({
   const handleRadioChange = (event) => {
     setSelectedRadio(event.target.value);
   };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleCloseFilter);
+  }, []);
 
   // close filter if resize window less than 1024px
   const handleCloseFilter = () => {

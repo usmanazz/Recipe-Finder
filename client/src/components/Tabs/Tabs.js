@@ -1,9 +1,8 @@
-import { useRef, useState } from "react";
-import "./Tabs.css";
-
+import React, { useRef, useState } from "react";
 import { ChangeUsernameForm } from "../ChangeUsernameForm/ChangeUsernameForm";
 import { ChangePasswordForm } from "../ChangePasswordForm/ChangePasswordForm";
 import { FavoriteList } from "../FavoriteList/FavoriteList";
+import "./Tabs.css";
 
 export const Tabs = ({
   isAuthenticated,
@@ -13,14 +12,6 @@ export const Tabs = ({
   setUserName,
 }) => {
   const [toggleState, setToggleState] = useState(1);
-  // const [usernameValues, setUsernameValues] = useState({
-  //   currentUsername: "",
-  //   newUsername: "",
-  // });
-  // const [passwordValues, setPasswordValues] = useState({
-  //   currentPassword: "",
-  //   newPassword: "",
-  // });
   const [renderUsernameError, setRenderUsernameError] = useState(false);
   const [usernameResMessage, setUsernameResMessage] = useState("");
   const [renderPasswordError, setRenderPasswordError] = useState(false);

@@ -24,7 +24,6 @@ export const Favorite = ({
     if (isAuthenticated) {
       // user wants to delete recipe from favorites
       await removeRecipeFromFavorites();
-      // window.location = "/account";
 
       // removes recipe from the displayed list
       handleDelete();
@@ -47,21 +46,14 @@ export const Favorite = ({
         recipeId: favorite.id,
       };
 
-      const response = await fetch(
-        "http://localhost:5000/dashboard/remove-favorite",
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            token: localStorage.token,
-          },
-          body: JSON.stringify(body),
-        }
-      );
-      console.log("inside async function");
-
-      const parseRes = await response.json();
-      console.log(parseRes);
+      await fetch("http://localhost:5000/dashboard/remove-favorite", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.token,
+        },
+        body: JSON.stringify(body),
+      });
     } catch (err) {
       console.log(err);
     }

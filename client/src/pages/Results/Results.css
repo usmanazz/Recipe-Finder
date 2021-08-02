@@ -97,12 +97,6 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .Results {
-    /* margin-top: 3rem; */
-  }
-}
-
 @media screen and (max-width: 640px) {
   .recipe-cards-container {
     grid-template-columns: repeat(2, minmax(12rem, 1fr));

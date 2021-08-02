@@ -11,8 +11,6 @@ let Spoonacular = {
             )
             .join("");
 
-    // console.log(ingredientParam);
-
     return fetch(
       `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${ingredientParam}&number=1&ignorePantry=true&ranking=1`,
       {

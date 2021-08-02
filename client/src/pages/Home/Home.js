@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import { IngredientsForm } from "../../components/IngredientsForm/IngredientsForm";
 import "./Home.css";
 
@@ -17,7 +16,6 @@ export const Home = ({
   isLoading,
   setIsLoading,
   count,
-  setCount,
 }) => {
   // reset website content when revisiting home page
   useEffect(() => {
@@ -28,7 +26,6 @@ export const Home = ({
     // reset ingredients form when revisit Home page
     setIngredients([]);
 
-    // setCount((prev) => prev + 1);
     if (count > 1) {
       window.location = "/";
     }

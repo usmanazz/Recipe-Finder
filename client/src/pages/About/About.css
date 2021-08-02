@@ -45,12 +45,6 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .About {
-    /* margin-top: 3rem; */
-  }
-}
-
 @media screen and (max-width: 600px) {
   .about-card-container {
     width: 100%;

@@ -31,37 +31,18 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [recipesToShow, setRecipesToShow] = useState([]);
   const [next, setNext] = useState(2);
-  // const [isLoading, setIsLoading] = useState(true);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [count, setCount] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
   const [selectedFilterDisplayed, setSelectedFilterDisplayed] = useState(false);
 
-  // var represents 10 min to check if user is auth frequently
+  // represents 10 min to frequently check if user is auth
   const MINUTE_MS = 60000 * 10;
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
-
-  useEffect(() => {
-    isUserAuth();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      console.log("runs isAuth every 10 minutes");
-      isUserAuth();
-    }, MINUTE_MS);
-
-    // This represents the unmount function, in which you need to clear
-    // your interval to prevent memory leaks.
-    return () => clearInterval(interval);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const isUserAuth = async () => {
     try {
@@ -79,12 +60,29 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    isUserAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      isUserAuth();
+    }, MINUTE_MS);
+
+    // This represents the unmount function, in which you need to clear
+    // your interval to prevent memory leaks.
+    return () => clearInterval(interval);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Router>
       <div className="App">
         <NavBar isAuthenticated={isAuthenticated} />
         <LoadingScreen />
-        <div /*className="content-container"*/>
+        <div>
           <ScrollToTop />
           <Switch>
             <Route exact path="/">
@@ -99,8 +97,6 @@ function App() {
                 setErrors={setErrors}
                 recipes={recipes}
                 setRecipes={setRecipes}
-                // isLoading={isLoading}
-                // setIsLoading={setIsLoading}
                 count={count}
                 setCount={setCount}
               />
@@ -118,8 +114,6 @@ function App() {
                 setRecipesToShow={setRecipesToShow}
                 next={next}
                 setNext={setNext}
-                // isLoading={isLoading}
-                // setIsLoading={setIsLoading}
                 count={count}
                 setCount={setCount}
                 selectedFilterDisplayed={selectedFilterDisplayed}
@@ -153,9 +147,7 @@ function App() {
                   <Redirect to="/login" />
                 )
               }
-            >
-              {/* <MyAccount /> */}
-            </Route>
+            ></Route>
             <Route
               path="/login"
               render={(props) =>
@@ -165,9 +157,7 @@ function App() {
                   <Redirect to="/account" />
                 )
               }
-            >
-              {/* <Login /> */}
-            </Route>
+            ></Route>
             <Route
               path="/signup"
               render={(props) =>
@@ -177,9 +167,7 @@ function App() {
                   <Redirect to="/login" />
                 )
               }
-            >
-              {/* <Signup /> */}
-            </Route>
+            ></Route>
 
             {/* 404 page for any path not specified above */}
             <Route exact component={NotFoundPage} />

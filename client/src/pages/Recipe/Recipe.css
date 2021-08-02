@@ -218,12 +218,6 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .Recipe {
-    /* margin-top: 3rem; */
-  }
-}
-
 @media screen and (max-width: 680px) {
   .info-container {
     display: flex;

@@ -1,6 +1,6 @@
 import React from "react";
-import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
 
 import "./FilterModal.css";
 import RangeSlider from "../UI/RangeSlider";
@@ -10,7 +10,6 @@ export const FilterModal = ({
   show,
   setShow,
   selectedRadio,
-  setSelectedRadio,
   cookTime,
   setCookTime,
   numOfIngredients,

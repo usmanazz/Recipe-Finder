@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "../../components/UI/Button";
 import { Modal } from "react-responsive-modal";
-
 import "./NutritionInfo.css";
 
 export const NutritionInfo = ({ recipe }) => {

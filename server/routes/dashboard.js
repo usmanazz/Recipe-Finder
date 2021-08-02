@@ -7,15 +7,11 @@ const authorization = require("../middleware/authorization");
 // ------------- get user from authrization middleware ---------------
 router.get("/", authorization, async (req, res, next) => {
   try {
-    // req.user has the payload
-    // res.json(req.user);
-
     const user = await pool.query(
       "SELECT user_name FROM users WHERE user_id = $1",
       [req.user]
     );
     res.json(user.rows[0]);
-    // console.log(user);
   } catch (err) {
     console.log(err.message);
     res.status(500).json("Server Error");
@@ -149,6 +145,7 @@ router.post("/add-favorite", authorization, async (req, res, next) => {
     res.json("Added to favorites!");
   } catch (err) {
     console.log(err.message);
+    res.status(500).json("Server Error");
   }
 });
 
@@ -177,7 +174,8 @@ router.get("/get-favorites", authorization, async (req, res, next) => {
     // 3. give back list of favorites
     res.json(favorites.rows);
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
+    res.status(500).json("Server Error");
   }
 });
 
@@ -204,7 +202,8 @@ router.delete("/remove-favorite", authorization, async (req, res, next) => {
     // 4. send confirmation of deletion
     res.json("Removed from favorites!");
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
+    res.status(500).json("Server Error");
   }
 });
 

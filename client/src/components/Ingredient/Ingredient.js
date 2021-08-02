@@ -1,5 +1,4 @@
 import React from "react";
-
 import deleteIcon from "./outline_delete_outline_black_24dp.png";
 import "./Ingredient.css";
 

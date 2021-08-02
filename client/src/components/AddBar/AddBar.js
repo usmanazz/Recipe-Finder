@@ -10,7 +10,6 @@ export const AddBar = ({
   setText,
   disableButton,
   setDisableButton,
-  errors,
   setErrors,
 }) => {
   // saves every change made in input field
@@ -30,6 +29,7 @@ export const AddBar = ({
     }
   };
 
+  // validates user input
   const handleValidation = () => {
     let field = text;
     let err = {};
@@ -52,7 +52,7 @@ export const AddBar = ({
     return formIsValid;
   };
 
-  // disables add button when necessary
+  // disables add button when user adds 5 ingredients
   useEffect(() => {
     const addButton = document.querySelector(".button.add-btn");
 

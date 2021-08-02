@@ -21,8 +21,6 @@ export const Login = ({ setAuth }) => {
   });
 
   const onSubmit = async (values) => {
-    console.log("form values ", values);
-
     try {
       const response = await fetch("http://localhost:5000/auth/login", {
         method: "POST",
@@ -31,13 +29,12 @@ export const Login = ({ setAuth }) => {
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
 
       // credentials are incorrect, save error message and display
       if (!parseRes.token) {
         setErrorMessage(parseRes);
       } else {
-        // login successfull, save token to local storage
+        // login successfull, save token and username to local storage
         localStorage.setItem("token", parseRes.token);
         localStorage.setItem("userName", parseRes.user_name);
         setAuth(true);
@@ -52,7 +49,7 @@ export const Login = ({ setAuth }) => {
         });
       }
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
     }
   };
 
@@ -66,23 +63,9 @@ export const Login = ({ setAuth }) => {
         >
           {(formik) => {
             const { email, password } = formik.values;
-            console.log(formik);
             return (
               <div>
                 <h3 className="login-title">LOGIN INTO MY ACCOUNT</h3>
-
-                {/* Field errors */}
-                {/* {renderError ? (
-                  <div className="main-error-message error-message">
-                    Please fill out all of the fields
-                  </div>
-                ) : null}
-
-                {errorMessage ? (
-                  <div className="main-error-message error-message">
-                    {errorMessage}
-                  </div>
-                ) : null} */}
 
                 {/* Field and credentials errors */}
                 {renderError && errorMessage ? (

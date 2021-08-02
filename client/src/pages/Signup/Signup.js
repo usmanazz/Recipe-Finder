@@ -16,8 +16,6 @@ export const Signup = ({ setAuth }) => {
   };
 
   const onSubmit = async (values) => {
-    console.log("Form data ", values);
-
     try {
       const response = await fetch("http://localhost:5000/auth/register", {
         method: "POST",
@@ -26,19 +24,18 @@ export const Signup = ({ setAuth }) => {
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
 
       // credentials are incorrect, save error message and display
       if (!parseRes.token) {
         setErrorMessage(parseRes);
       } else {
-        // save token to local storage
+        // signup successful, save token and username to local storage
         localStorage.setItem("token", parseRes.token);
         localStorage.setItem("userName", parseRes.user_name);
         setAuth(true);
       }
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
     }
   };
 
@@ -81,13 +78,6 @@ export const Signup = ({ setAuth }) => {
                     {errorMessage}
                   </div>
                 ) : null}
-
-                {/* Error signing up */}
-                {/* {errorMessage ? (
-                  <div className="main-error-message error-message">
-                    {errorMessage}
-                  </div>
-                ) : null} */}
 
                 <Form className="signup-form">
                   <div className="signup-field">

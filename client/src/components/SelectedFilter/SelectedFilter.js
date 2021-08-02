@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-
-import "./SelectedFilter.css";
 import deleteIcon from "./baseline_clear_black_24dp.png";
 import { Button } from "../UI/Button";
+import "./SelectedFilter.css";
 
 export const SelectedFilter = ({
   selectedRadio,
@@ -13,7 +12,6 @@ export const SelectedFilter = ({
   setNumOfIngredients,
   calories,
   setCalories,
-  selectedFilterDisplayed,
   setSelectedFilterDisplayed,
 }) => {
   useEffect(() => {

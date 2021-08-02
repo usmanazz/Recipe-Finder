@@ -11,7 +11,6 @@ export const NavBar = ({ isAuthenticated }) => {
       // close side nav if resize window greater than 768px
       const nav = document.querySelector(".links");
       if (window.innerWidth > 768 && nav.classList.contains("nav-active")) {
-        console.log("WTFFFFFF");
         handleNavSlide();
       }
 
@@ -36,7 +35,6 @@ export const NavBar = ({ isAuthenticated }) => {
     if (nav.classList.contains("nav-active")) {
       nav.style.boxShadow = "4px 6px 4px rgba(0, 0, 0, 0.25)";
     } else if (!nav.classList.contains("nav-active")) {
-      console.log("hello");
       nav.style.boxShadow = "none";
     }
 

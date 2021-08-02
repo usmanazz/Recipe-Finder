@@ -16,21 +16,14 @@ export const IngredientsForm = ({
   setDisableButton,
   errors,
   setErrors,
-  recipes,
   setRecipes,
-  isLoading,
-  setIsLoading,
 }) => {
   const handleSubmit = () => {
     trackPromise(
       Spoonacular.searchRecipes(ingredients).then((recipes) => {
-        // setRecipes(recipes);
-        // setIsLoading(false);
-
         sessionStorage.setItem("recipes", JSON.stringify(recipes));
         sessionStorage.setItem("ingredients", JSON.stringify(ingredients));
         setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
-        // setIsLoading(false);
       })
     );
   };

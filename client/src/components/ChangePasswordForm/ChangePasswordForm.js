@@ -12,18 +12,12 @@ export const ChangePasswordForm = ({
   passwordResMessage,
   setPasswordResMessage,
 }) => {
-  // const [renderError, setRenderError] = useState(false);
-  // const [resMessage, setResMessage] = useState("");
-  // const formikRef = useRef();
-
   const initialValues = {
     currentPassword: "",
     newPassword: "",
   };
 
   const onSubmit = async (values, { resetForm }) => {
-    // console.log("Form data ", values);
-
     try {
       const response = await fetch(
         "http://localhost:5000/dashboard/change-password",
@@ -39,7 +33,6 @@ export const ChangePasswordForm = ({
 
       const parseRes = await response.json();
       if (parseRes === "Successfully changed password!") {
-        // setResMessage(parseRes);
         toast.success(parseRes, {
           position: "top-right",
           autoClose: 3000,
@@ -52,15 +45,6 @@ export const ChangePasswordForm = ({
         resetForm({ values: "" });
       } else {
         setPasswordResMessage(parseRes);
-        // toast.error(parseRes, {
-        //   position: "top-right",
-        //   autoClose: 3000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: false,
-        //   draggable: false,
-        //   progress: undefined,
-        // });
       }
     } catch (err) {
       console.log(err);
