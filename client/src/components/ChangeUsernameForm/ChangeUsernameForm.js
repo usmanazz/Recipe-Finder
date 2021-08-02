@@ -14,6 +14,8 @@ export const ChangeUsernameForm = ({
   setRenderUsernameError,
   usernameResMessage,
   setUsernameResMessage,
+  userName,
+  setUserName,
 }) => {
   // const [renderError, setRenderError] = useState(false);
   // const [resMessage, setResMessage] = useState("");
@@ -23,13 +25,6 @@ export const ChangeUsernameForm = ({
     currentUsername: "",
     newUsername: "",
   };
-
-  // useEffect(() => {
-  //   if (!formikRef.current) {
-  //     console.log("PEEEEEEN");
-  //     formikRef.current.resetForm();
-  //   }
-  // });
 
   const onSubmit = async (values, { resetForm }) => {
     // console.log("Form data ", values);
@@ -72,6 +67,9 @@ export const ChangeUsernameForm = ({
           draggable: false,
           progress: undefined,
         });
+        localStorage.setItem("userName", values.newUsername);
+        console.log(values.newUsername);
+        setUserName(localStorage.getItem("userName"));
         resetForm({ values: "" });
       }
     } catch (err) {

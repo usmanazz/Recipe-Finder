@@ -50,6 +50,8 @@ export const MyAccount = ({
           isAuthenticated={isAuthenticated}
           favoritesList={favoritesList}
           setFavoritesList={setFavoritesList}
+          userName={userName}
+          setUserName={setUserName}
         />
       </div>
     </div>

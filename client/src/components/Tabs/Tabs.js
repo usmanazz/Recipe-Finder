@@ -5,7 +5,13 @@ import { ChangeUsernameForm } from "../ChangeUsernameForm/ChangeUsernameForm";
 import { ChangePasswordForm } from "../ChangePasswordForm/ChangePasswordForm";
 import { FavoriteList } from "../FavoriteList/FavoriteList";
 
-export const Tabs = ({ isAuthenticated, favoritesList, setFavoritesList }) => {
+export const Tabs = ({
+  isAuthenticated,
+  favoritesList,
+  setFavoritesList,
+  userName,
+  setUserName,
+}) => {
   const [toggleState, setToggleState] = useState(1);
   // const [usernameValues, setUsernameValues] = useState({
   //   currentUsername: "",
@@ -87,6 +93,8 @@ export const Tabs = ({ isAuthenticated, favoritesList, setFavoritesList }) => {
           }
         >
           <ChangeUsernameForm
+            userName={userName}
+            setUserName={setUserName}
             usernameFormikRef={usernameFormikRef}
             renderUsernameError={renderUsernameError}
             setRenderUsernameError={setRenderUsernameError}

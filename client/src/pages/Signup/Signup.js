@@ -34,6 +34,7 @@ export const Signup = ({ setAuth }) => {
       } else {
         // save token to local storage
         localStorage.setItem("token", parseRes.token);
+        localStorage.setItem("userName", parseRes.user_name);
         setAuth(true);
       }
     } catch (err) {
