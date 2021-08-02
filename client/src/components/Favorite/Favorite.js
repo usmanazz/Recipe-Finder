@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
@@ -13,15 +13,10 @@ export const Favorite = ({
   isAuthenticated,
 }) => {
   const { title, readyInMinutes, image } = favorite;
-  const [showImage, setShowImage] = useState(true);
 
   const handleDelete = () => {
     const newFavList = favoritesList.filter((fav) => fav.id !== favorite.id);
     setFavoritesList(newFavList);
-  };
-
-  const handleImage = () => {
-    setShowImage((prev) => !prev);
   };
 
   const handleFavDelete = async () => {

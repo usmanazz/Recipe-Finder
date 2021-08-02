@@ -6,8 +6,6 @@ import { Filters } from "../../components/Filters/Filters";
 import { SelectedFilter } from "../../components/SelectedFilter/SelectedFilter";
 import { RecipeCard } from "../../components/RecipeCard/RecipeCard";
 import { Button } from "../../components/UI/Button";
-import { LoadingScreen } from "../../components/LoadingScreen/LoadingScreen";
-import { TryAgainScreen } from "../../components/TryAgainScreen/TryAgainScreen";
 
 export const Results = ({
   ingredients,
@@ -73,7 +71,7 @@ export const Results = ({
       // setIsLoading(false);
     }
 
-    if (ingredients.length == 0) {
+    if (ingredients.length === 0) {
       setIngredients(JSON.parse(sessionStorage.getItem("ingredients") || "[]"));
     }
   }, []);

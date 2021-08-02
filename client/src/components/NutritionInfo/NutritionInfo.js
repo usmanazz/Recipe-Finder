@@ -3,7 +3,6 @@ import { Button } from "../../components/UI/Button";
 import { Modal } from "react-responsive-modal";
 
 import "./NutritionInfo.css";
-import { useParams } from "react-router";
 
 export const NutritionInfo = ({ recipe }) => {
   const [show, setShow] = useState(false);

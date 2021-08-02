@@ -1,19 +1,10 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { Button } from "../UI/Button";
 import accountLogo from "./outline_person_outline_black_24dp.png";
 import "./NavBar.css";
 
 export const NavBar = ({ isAuthenticated }) => {
-  const handleLoginClick = () => {
-    console.log("login page");
-  };
-
-  const handleSignupClick = () => {
-    console.log("signup page");
-  };
-
   useEffect(() => {
     let resizeTimer;
     window.addEventListener("resize", () => {

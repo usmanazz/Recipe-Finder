@@ -62,9 +62,6 @@ export const Signup = ({ setAuth }) => {
           onSubmit={onSubmit}
         >
           {(formik) => {
-            {
-              /* console.log("Formik props", formik); */
-            }
             const { name, email, password } = formik.values;
             return (
               <div>

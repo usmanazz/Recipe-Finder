@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 
 import "./ChangeUsernameForm.css";
-import { Link } from "react-router-dom";
 // import { use } from "../../../../server/routes/jwtAuth";
 
 export const ChangeUsernameForm = ({
@@ -92,11 +91,7 @@ export const ChangeUsernameForm = ({
           innerRef={usernameFormikRef}
         >
           {(formik) => {
-            {
-              /* console.log(formik); */
-            }
             const { currentUsername, newUsername } = formik.values;
-            const { touched } = formik;
             return (
               <div>
                 <h3 className="change-username-title">Change Username</h3>

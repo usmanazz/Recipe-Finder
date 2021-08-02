@@ -106,7 +106,6 @@ export const Recipe = ({
         }
       );
 
-      const parseRes = await response.json();
       setRenderFavButton(true);
     } catch (err) {
       console.log(err);
@@ -132,7 +131,6 @@ export const Recipe = ({
         }
       );
 
-      const parseRes = await response.json();
       setRenderFavButton(false);
     } catch (err) {
       console.log(err);
