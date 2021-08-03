@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Ingredient } from "../Ingredient/Ingredient";
 import "./IngredientList.css";
 
