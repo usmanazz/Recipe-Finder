@@ -6,6 +6,7 @@ import { Filters } from "../../components/Filters/Filters";
 import { SelectedFilter } from "../../components/SelectedFilter/SelectedFilter";
 import { RecipeCard } from "../../components/RecipeCard/RecipeCard";
 import { Button } from "../../components/UI/Button";
+import { TryAgainScreen } from "../../components/TryAgainScreen/TryAgainScreen";
 import computeFilters from "../../util/ComputeFilters";
 
 export const Results = ({
@@ -91,6 +92,7 @@ export const Results = ({
     ));
   };
 
+  if (typeof recipes[0] === "string") return <TryAgainScreen />;
   return (
     <div className="Results">
       <div className="results-title-container">

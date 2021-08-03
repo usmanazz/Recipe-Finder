@@ -60,6 +60,7 @@ let Spoonacular = {
       })
       .catch((err) => {
         console.error(err);
+        return ["Failed to fetch data. Please try again."];
       });
   },
 };
