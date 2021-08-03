@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 
 import "./MyAccount.css";
 import { Tabs } from "../../components/Tabs/Tabs";

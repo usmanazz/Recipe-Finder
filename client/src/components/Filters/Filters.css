@@ -19,13 +19,6 @@
   display: none;
 }
 
-.button.alpha-order-btn {
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
-  padding: 0.8rem 0.5rem;
-}
-
 .filter-btn-styles-pre {
   border-radius: 5px;
   border: 1px solid transparent;
@@ -43,17 +36,33 @@
   font-weight: bold;
 }
 
-.button.alpha-order-btn:hover {
+.button.alpha-order-btn,
+.button.cook-time-btn,
+.button.num-ingredients-btn,
+.button.calories-btn {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  padding: 0.8rem 0.5rem;
+}
+
+.button.alpha-order-btn:hover,
+.button.cook-time-btn:hover,
+.button.num-ingredients-btn:hover,
+.button.calories-btn:hover {
   background-color: rgb(245, 245, 245);
   cursor: pointer;
 }
 
-.button.alpha-order-btn img {
+.button.alpha-order-btn img,
+.button.cook-time-btn img,
+.button.num-ingredients-btn img,
+.button.calories-btn img {
   width: 1.7rem;
   height: 1.7rem;
 }
 
-.alphabetic-order-filters {
+.filter-content {
   display: none;
   position: absolute;
   background-color: rgb(245, 245, 245);
@@ -63,85 +72,14 @@
   border-radius: 0 5px 5px 5px;
 }
 
-.button.cook-time-btn {
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
-  padding: 0.8rem 0.5rem;
+.alphabetic-order-filters {
+  padding: 1.8rem;
 }
 
-.button.cook-time-btn:hover {
-  background-color: rgb(245, 245, 245);
-  cursor: pointer;
-}
-
-.button.cook-time-btn img {
-  width: 1.7rem;
-  height: 1.7rem;
-}
-
-.cook-time-filters {
-  display: none;
-  position: absolute;
-  background-color: rgb(245, 245, 245);
-  width: 100%;
-  padding: 1rem 2rem;
-  border: 1px solid rgb(231, 231, 231);
-  border-radius: 0 5px 5px 5px;
-}
-
-.button.num-ingredients-btn {
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
-  padding: 0.8rem 0.5rem;
-}
-
-.button.num-ingredients-btn:hover {
-  background-color: rgb(245, 245, 245);
-  cursor: pointer;
-}
-
-.button.num-ingredients-btn img {
-  width: 1.7rem;
-  height: 1.7rem;
-}
-
-.num-ingredients-filters {
-  display: none;
-  position: absolute;
-  background-color: rgb(245, 245, 245);
-  width: 100%;
-  padding: 1rem 2rem;
-  border: 1px solid rgb(231, 231, 231);
-  border-radius: 0 5px 5px 5px;
-}
-
-.button.calories-btn {
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
-  padding: 0.8rem 0.5rem;
-}
-
-.button.calories-btn:hover {
-  background-color: rgb(245, 245, 245);
-  cursor: pointer;
-}
-
-.button.calories-btn img {
-  width: 1.7rem;
-  height: 1.7rem;
-}
-
+.cook-time-filters,
+.num-ingredients-filters,
 .calories-filters {
-  display: none;
-  position: absolute;
-  background-color: rgb(245, 245, 245);
-  width: 100%;
   padding: 1rem 2rem;
-  border: 1px solid rgb(231, 231, 231);
-  border-radius: 0 5px 5px 5px;
 }
 
 .display-filters {

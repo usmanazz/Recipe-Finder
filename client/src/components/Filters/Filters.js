@@ -268,7 +268,7 @@ export const Filters = ({
           iconRight={downArrowIcon}
         />
 
-        <div className="alphabetic-order-filters">
+        <div className="alphabetic-order-filters filter-content">
           <label className="radio">
             a - z
             <input
@@ -305,7 +305,7 @@ export const Filters = ({
           iconRight={downArrowIcon}
         />
 
-        <div className="cook-time-filters">
+        <div className="cook-time-filters filter-content">
           <RangeSlider
             value={cookTime}
             setValue={setCookTime}
@@ -325,7 +325,7 @@ export const Filters = ({
           iconRight={downArrowIcon}
         />
 
-        <div className="num-ingredients-filters">
+        <div className="num-ingredients-filters filter-content">
           <RangeSlider
             value={numOfIngredients}
             setValue={setNumOfIngredients}
@@ -345,7 +345,7 @@ export const Filters = ({
           iconRight={downArrowIcon}
         />
 
-        <div className="calories-filters">
+        <div className="calories-filters filter-content">
           <RangeSlider
             value={calories}
             setValue={setCalories}

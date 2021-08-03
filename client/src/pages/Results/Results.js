@@ -6,6 +6,7 @@ import { Filters } from "../../components/Filters/Filters";
 import { SelectedFilter } from "../../components/SelectedFilter/SelectedFilter";
 import { RecipeCard } from "../../components/RecipeCard/RecipeCard";
 import { Button } from "../../components/UI/Button";
+import computeFilters from "../../util/ComputeFilters";
 
 export const Results = ({
   ingredients,
@@ -60,52 +61,22 @@ export const Results = ({
     setNext(next + recipesPerPage);
   };
 
-  const alphaOrderFilterRecipes = () => {
-    if (selectedRadio === "a - z") {
-      return [...recipesToShow].sort((a, b) => (a.title > b.title ? 1 : -1));
-    } else if (selectedRadio === "z - a") {
-      return [...recipesToShow].sort((a, b) => (a.title > b.title ? -1 : 1));
-    } else {
-      return recipesToShow;
-    }
-  };
-
-  const cookTimeFilterRecipes = (recipes) => {
-    return recipes.filter(
-      (recipe) =>
-        recipe.readyInMinutes >= cookTime[0] &&
-        recipe.readyInMinutes <= cookTime[1]
-    );
-  };
-
-  const numOfIngredientsFilterRecipes = (recipes) => {
-    return recipes.filter(
-      (recipe) =>
-        recipe.extendedIngredients.length >= numOfIngredients[0] &&
-        recipe.extendedIngredients.length <= numOfIngredients[1]
-    );
-  };
-
-  const caloriesFilterRecipes = (recipes) => {
-    return recipes.filter((recipe) => {
-      const recipeCalories = Math.floor(
-        recipe.nutrition.nutrients.find(
-          (element) => element.name === "Calories"
-        ).amount
-      );
-      return recipeCalories >= calories[0] && recipeCalories <= calories[1];
-    });
-  };
-
-  const alphaOrderFilteredRecipes = alphaOrderFilterRecipes();
-  const cookTimeFilteredRecipes = cookTimeFilterRecipes(
-    alphaOrderFilteredRecipes
+  const alphaOrderFilteredRecipes = computeFilters.alphaOrderFilterRecipes(
+    recipesToShow,
+    selectedRadio
   );
-  const numOfIngredientsFilteredRecipes = numOfIngredientsFilterRecipes(
-    cookTimeFilteredRecipes
+  const cookTimeFilteredRecipes = computeFilters.cookTimeFilterRecipes(
+    alphaOrderFilteredRecipes,
+    cookTime
   );
-  const caloriesFilteredRecipes = caloriesFilterRecipes(
-    numOfIngredientsFilteredRecipes
+  const numOfIngredientsFilteredRecipes =
+    computeFilters.numOfIngredientsFilterRecipes(
+      cookTimeFilteredRecipes,
+      numOfIngredients
+    );
+  const caloriesFilteredRecipes = computeFilters.caloriesFilterRecipes(
+    numOfIngredientsFilteredRecipes,
+    calories
   );
 
   const mapRecipes = () => {

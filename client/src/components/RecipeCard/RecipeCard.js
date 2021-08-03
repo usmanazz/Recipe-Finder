@@ -1,7 +1,7 @@
 import React from "react";
 import "./RecipeCard.css";
 
-export const RecipeCard = ({ recipe, recipee }) => {
+export const RecipeCard = ({ recipe }) => {
   const calories = Math.floor(
     recipe.nutrition.nutrients.find((element) => element.name === "Calories")
       .amount

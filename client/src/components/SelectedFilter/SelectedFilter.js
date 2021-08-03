@@ -20,20 +20,8 @@ export const SelectedFilter = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleRemoveAlphaOrderFilter = () => {
-    setSelectedRadio("");
-  };
-
-  const handleRemoveCookTimeFilter = () => {
-    setCookTime([0, 200]);
-  };
-
-  const handleRemoveNumOfIngredientsFilter = () => {
-    setNumOfIngredients([0, 20]);
-  };
-
-  const handleRemoveCaloriesFilter = () => {
-    setCalories([0, 2000]);
+  const handleRemoveFilter = (setter, value) => {
+    setter(value);
   };
 
   const handleClearAll = () => {
@@ -74,7 +62,7 @@ export const SelectedFilter = ({
 
         {selectedRadio ? (
           <Button
-            handleClick={handleRemoveAlphaOrderFilter}
+            handleClick={() => handleRemoveFilter(setSelectedRadio, "")}
             label={selectedRadio}
             type="selected-filter-btn"
             iconLeft={deleteIcon}
@@ -83,7 +71,7 @@ export const SelectedFilter = ({
 
         {cookTime[0] !== 0 || cookTime[1] !== 200 ? (
           <Button
-            handleClick={handleRemoveCookTimeFilter}
+            handleClick={() => handleRemoveFilter(setCookTime, [0, 200])}
             label={`${cookTime[0]} - ${cookTime[1]} min`}
             type="selected-filter-btn"
             iconLeft={deleteIcon}
@@ -92,7 +80,7 @@ export const SelectedFilter = ({
 
         {numOfIngredients[0] !== 0 || numOfIngredients[1] !== 20 ? (
           <Button
-            handleClick={handleRemoveNumOfIngredientsFilter}
+            handleClick={() => handleRemoveFilter(setNumOfIngredients, [0, 20])}
             label={`${numOfIngredients[0]} - ${numOfIngredients[1]} ingredients`}
             type="selected-filter-btn"
             iconLeft={deleteIcon}
@@ -101,7 +89,7 @@ export const SelectedFilter = ({
 
         {calories[0] !== 0 || calories[1] !== 2000 ? (
           <Button
-            handleClick={handleRemoveCaloriesFilter}
+            handleClick={() => handleRemoveFilter(setCalories, [0, 2000])}
             label={`${calories[0]} - ${calories[1]} cal`}
             type="selected-filter-btn"
             iconLeft={deleteIcon}
