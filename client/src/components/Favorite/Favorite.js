@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import deleteIcon from "./outline_delete_outline_black_24dp.png";
+
 import "./Favorite.css";
 import favoritesApi from "../../api/Favorites";
 import notifications from "../UI/Notifications";

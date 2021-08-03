@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 
 import "./MyAccount.css";
 import { Tabs } from "../../components/Tabs/Tabs";
+import notifications from "../../components/UI/Notifications";
 
 export const MyAccount = ({
   setAuth,
@@ -22,15 +23,7 @@ export const MyAccount = ({
     localStorage.removeItem("userName");
     setFavoritesList([]);
     setAuth(false);
-    toast.success(`Successfully logged out!`, {
-      position: "top-right",
-      autoClose: 2500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-    });
+    notifications.success("Successfully logged out!", 2500);
   };
 
   return (

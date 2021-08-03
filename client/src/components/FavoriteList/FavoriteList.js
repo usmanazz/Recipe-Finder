@@ -16,7 +16,6 @@ export const FavoriteList = ({
           const parseFavorites = favorites.map((recipe) =>
             JSON.parse(recipe.recipe_info)
           );
-
           setFavoritesList(parseFavorites);
         }
       }

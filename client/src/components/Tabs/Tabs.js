@@ -48,6 +48,7 @@ export const Tabs = ({
         >
           FAVORITES
         </button>
+
         <button
           className={
             toggleState === 2
@@ -71,6 +72,7 @@ export const Tabs = ({
               {favoritesList.length} Favorites
             </h2>
           )}
+
           <FavoriteList
             isAuthenticated={isAuthenticated}
             favoritesList={favoritesList}
