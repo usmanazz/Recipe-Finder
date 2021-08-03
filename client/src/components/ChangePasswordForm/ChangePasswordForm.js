@@ -1,9 +1,10 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { toast } from "react-toastify";
 
 import "./ChangePasswordForm.css";
+import updateAuthApi from "../../api/UpdateAuth";
+import notifications from "../UI/Notifications";
 
 export const ChangePasswordForm = ({
   passwordFormikRef,
@@ -18,36 +19,13 @@ export const ChangePasswordForm = ({
   };
 
   const onSubmit = async (values, { resetForm }) => {
-    try {
-      const response = await fetch(
-        "http://localhost:5000/dashboard/change-password",
-        {
-          method: "POST",
-          headers: {
-            token: localStorage.token,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }
-      );
+    const newPassword = await updateAuthApi.changePassword(values);
 
-      const parseRes = await response.json();
-      if (parseRes === "Successfully changed password!") {
-        toast.success(parseRes, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-        });
-        resetForm({ values: "" });
-      } else {
-        setPasswordResMessage(parseRes);
-      }
-    } catch (err) {
-      console.log(err);
+    if (newPassword === "Successfully changed password!") {
+      resetForm({ values: "" });
+      notifications.success(newPassword, 3000);
+    } else {
+      setPasswordResMessage(newPassword);
     }
   };
 

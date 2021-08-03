@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import favoritesApi from "../../api/Favorites";
 import { Favorite } from "../Favorite/Favorite";
 import "./FavoriteList.css";
 
@@ -7,30 +8,10 @@ export const FavoriteList = ({
   favoritesList,
   setFavoritesList,
 }) => {
-  const getFavorites = async () => {
-    try {
-      const response = await fetch(
-        "http://localhost:5000/dashboard/get-favorites",
-        {
-          method: "GET",
-          headers: {
-            token: localStorage.token,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const parseRes = await response.json();
-      return parseRes;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
     async function fetchData() {
       if (isAuthenticated) {
-        const favorites = await getFavorites();
+        const favorites = await favoritesApi.getFavorites();
         if (favorites.length !== 0) {
           const parseFavorites = favorites.map((recipe) =>
             JSON.parse(recipe.recipe_info)

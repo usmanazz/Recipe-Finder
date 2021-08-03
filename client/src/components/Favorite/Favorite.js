@@ -1,9 +1,10 @@
 import React from "react";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
 import deleteIcon from "./outline_delete_outline_black_24dp.png";
 import "./Favorite.css";
+import favoritesApi from "../../api/Favorites";
+import notifications from "../UI/Notifications";
 
 export const Favorite = ({
   favorite,
@@ -23,39 +24,14 @@ export const Favorite = ({
     // user needs to be logged in to favorite/unfavorite
     if (isAuthenticated) {
       // user wants to delete recipe from favorites
-      await removeRecipeFromFavorites();
-
-      // removes recipe from the displayed list
-      handleDelete();
-      toast.success("Removed from Favorites!", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-      });
-    }
-  };
-
-  // api call to remove recipe from user's favorites
-  const removeRecipeFromFavorites = async () => {
-    try {
       const body = {
         recipeId: favorite.id,
       };
+      await favoritesApi.removeRecipeFromFavorites(body);
 
-      await fetch("http://localhost:5000/dashboard/remove-favorite", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          token: localStorage.token,
-        },
-        body: JSON.stringify(body),
-      });
-    } catch (err) {
-      console.log(err);
+      // removes recipe from the displayed list
+      handleDelete();
+      notifications.success("Removed from Favorites!", 2000);
     }
   };
 

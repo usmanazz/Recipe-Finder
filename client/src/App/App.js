@@ -20,6 +20,7 @@ import { Signup } from "../pages/Signup/Signup";
 import { MyAccount } from "../pages/MyAccount/MyAccount";
 import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
 import { LoadingScreen } from "../components/LoadingScreen/LoadingScreen";
+import authApi from "../api/Auth";
 
 toast.configure();
 function App() {
@@ -44,30 +45,22 @@ function App() {
     setIsAuthenticated(boolean);
   };
 
-  const isUserAuth = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/auth/is-verify", {
-        method: "GET",
-        headers: { token: localStorage.token },
-      });
+  const checkUserIsAuthenticated = async () => {
+    const userLoggedIn = await authApi.isUserAuth();
 
-      const parseRes = await response.json();
-
-      // set Authenticated to true for user to stay logged in on refresh
-      parseRes === true ? setAuth(true) : setAuth(false);
-    } catch (err) {
-      console.log(err.message);
-    }
+    // set Authenticated to true for user to stay logged in on refresh
+    userLoggedIn === true ? setAuth(true) : setAuth(false);
   };
 
   useEffect(() => {
-    isUserAuth();
+    checkUserIsAuthenticated();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      isUserAuth();
+      checkUserIsAuthenticated();
     }, MINUTE_MS);
 
     // This represents the unmount function, in which you need to clear

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./IngredientsForm.css";
 import { AddBar } from "../AddBar/AddBar";
 import { IngredientList } from "../IngredientList/IngredientList";
-import Spoonacular from "../../util/Spoonacular";
+import Spoonacular from "../../api/Spoonacular";
 import { trackPromise } from "react-promise-tracker";
 
 export const IngredientsForm = ({

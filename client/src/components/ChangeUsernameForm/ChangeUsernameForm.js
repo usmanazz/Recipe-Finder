@@ -1,9 +1,10 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { toast } from "react-toastify";
 
 import "./ChangeUsernameForm.css";
+import updateAuthApi from "../../api/UpdateAuth";
+import notifications from "../UI/Notifications";
 
 export const ChangeUsernameForm = ({
   setAuth,
@@ -21,39 +22,15 @@ export const ChangeUsernameForm = ({
   };
 
   const onSubmit = async (values, { resetForm }) => {
-    try {
-      const response = await fetch(
-        "http://localhost:5000/dashboard/change-username",
-        {
-          method: "POST",
-          headers: {
-            token: localStorage.token,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }
-      );
+    const newUsername = await updateAuthApi.changeUsername(values);
 
-      const parseRes = await response.json();
-
-      if (!parseRes.includes("Successfully")) {
-        setUsernameResMessage(parseRes);
-      } else {
-        toast.success(parseRes, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-        });
-        localStorage.setItem("userName", values.newUsername);
-        setUserName(localStorage.getItem("userName"));
-        resetForm({ values: "" });
-      }
-    } catch (err) {
-      console.log(err);
+    if (!newUsername.includes("Successfully")) {
+      setUsernameResMessage(newUsername);
+    } else {
+      localStorage.setItem("userName", values.newUsername);
+      setUserName(localStorage.getItem("userName"));
+      resetForm({ values: "" });
+      notifications.success(newUsername, 3000);
     }
   };
 

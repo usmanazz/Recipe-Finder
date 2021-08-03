@@ -4,6 +4,8 @@ import * as Yup from "yup";
 
 import "./Signup.css";
 import { Link } from "react-router-dom";
+import authApi from "../../api/Auth";
+import notifications from "../../components/UI/Notifications";
 
 export const Signup = ({ setAuth }) => {
   const [renderError, setRenderError] = useState(false);
@@ -16,26 +18,20 @@ export const Signup = ({ setAuth }) => {
   };
 
   const onSubmit = async (values) => {
-    try {
-      const response = await fetch("http://localhost:5000/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
+    const user = await authApi.signup(values);
 
-      const parseRes = await response.json();
-
-      // credentials are incorrect, save error message and display
-      if (!parseRes.token) {
-        setErrorMessage(parseRes);
-      } else {
-        // signup successful, save token and username to local storage
-        localStorage.setItem("token", parseRes.token);
-        localStorage.setItem("userName", parseRes.user_name);
-        setAuth(true);
-      }
-    } catch (err) {
-      console.log(err);
+    // credentials are incorrect, save error message and display
+    if (!user.token) {
+      setErrorMessage(user);
+    } else {
+      // signup successful, save token and username to local storage
+      localStorage.setItem("token", user.token);
+      localStorage.setItem("userName", user.user_name);
+      setAuth(true);
+      notifications.success(
+        `Sign up successful, Welcome ${user.user_name}!`,
+        3000
+      );
     }
   };
 

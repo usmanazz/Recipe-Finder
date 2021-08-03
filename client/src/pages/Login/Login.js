@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { toast } from "react-toastify";
 
 import "./Login.css";
 import { Link } from "react-router-dom";
+import authApi from "../../api/Auth";
+import notifications from "../../components/UI/Notifications";
 
 export const Login = ({ setAuth }) => {
   const [renderError, setRenderError] = useState(false);
@@ -21,35 +22,20 @@ export const Login = ({ setAuth }) => {
   });
 
   const onSubmit = async (values) => {
-    try {
-      const response = await fetch("http://localhost:5000/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
+    const user = await authApi.login(values);
 
-      const parseRes = await response.json();
-
-      // credentials are incorrect, save error message and display
-      if (!parseRes.token) {
-        setErrorMessage(parseRes);
-      } else {
-        // login successfull, save token and username to local storage
-        localStorage.setItem("token", parseRes.token);
-        localStorage.setItem("userName", parseRes.user_name);
-        setAuth(true);
-        toast.success(`Login Successful, Welcome back ${parseRes.user_name}!`, {
-          position: "top-right",
-          autoClose: 2500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-        });
-      }
-    } catch (err) {
-      console.log(err);
+    // credentials are incorrect, save error message and display
+    if (!user.token) {
+      setErrorMessage(user);
+    } else {
+      // login successfull, save token and username to local storage
+      localStorage.setItem("token", user.token);
+      localStorage.setItem("userName", user.user_name);
+      setAuth(true);
+      notifications.success(
+        `Login Successful, Welcome back ${user.user_name}!`,
+        3000
+      );
     }
   };
 
