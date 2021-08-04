@@ -1,6 +1,7 @@
 import React from "react";
 import "./NotFoundPage.css";
 
+// Display custom component when user visits url path that does not exist in web app
 export const NotFoundPage = () => {
   const pathname = window.location.pathname;
   return (

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 
+// Custom component to always start at top of initially rendered page
 function ScrollToTop({ history }) {
   useEffect(() => {
     const unlisten = history.listen(() => {

@@ -1,5 +1,6 @@
 import React from "react";
 
+// Custom Button component
 export const Button = ({
   handleClick,
   label,

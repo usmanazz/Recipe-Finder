@@ -12,10 +12,16 @@ export const MyAccount = ({
 }) => {
   const [userName, setUserName] = useState("");
 
+  // persist logged in user's name
   useEffect(() => {
     setUserName(localStorage.getItem("userName" || ""));
   }, []);
 
+  // On logout:
+  //    1. remove the user's token and nam from localstorage
+  //    2. reset favorite list state to prevent rendering curr user's favs
+  //    3. set auth to false to indicate user logged out
+  //    4. render notification to user
   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");

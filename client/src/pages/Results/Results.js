@@ -22,7 +22,9 @@ export const Results = ({
   selectedFilterDisplayed,
   setSelectedFilterDisplayed,
 }) => {
+  // number of recipes to display per "page"
   const recipesPerPage = 2;
+  // maintain state for filters
   const [selectedRadio, setSelectedRadio] = useState("");
   const [cookTime, setCookTime] = useState([0, 200]);
   const [numOfIngredients, setNumOfIngredients] = useState([0, 20]);
@@ -32,10 +34,12 @@ export const Results = ({
     // to ensure reset on when visit homepage
     setCount((prev) => prev + 1);
 
+    // persist recipes on refresh
     if (recipes.length === 0) {
       setRecipes(JSON.parse(sessionStorage.getItem("recipes") || "[]"));
     }
 
+    // persist ingredients for title on refresh
     if (ingredients.length === 0) {
       setIngredients(JSON.parse(sessionStorage.getItem("ingredients") || "[]"));
     }
@@ -43,25 +47,42 @@ export const Results = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // on initial page render, show first page of recipes
   useEffect(() => {
-    loopWithSlice(0, recipesPerPage);
+    addMoreRecipesToShow(0, recipesPerPage);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipes]);
 
-  const loopWithSlice = (start, end) => {
+  // Method to add next page of recipes to recipesToShow list to display
+  const addMoreRecipesToShow = (start, end) => {
+    // get ids of currently displayed recipes
     const recipeIds = recipesToShow.map((element) => element.id);
+
+    // slice next page of recipes from recipes list and
+    // filter these recipes by comparing to currently displayed recipess ids
     const slicedRecipes = recipes
       .slice(start, end)
       .filter((element) => !recipeIds.includes(element.id));
+
+    // add new page of recipes to list of recipes to be displayed
     setRecipesToShow((prev) => [...prev, ...slicedRecipes]);
   };
 
+  // When user clicks to render more recipes, display more recipes and
+  // increment next for future pages
   const handleLoadMoreRecipes = () => {
-    loopWithSlice(next, next + recipesPerPage);
+    addMoreRecipesToShow(next, next + recipesPerPage);
     setNext(next + recipesPerPage);
   };
 
+  // ****************
+  //
+  // 4 functions used to apply filters by passing previously modified list of recipes to display
+  // to next filter until all 4 filters have been applied. Then the last filter function returns the
+  // the list of recipes to be rendered.
+  //
+  // ****************
   const alphaOrderFilteredRecipes = computeFilters.alphaOrderFilterRecipes(
     recipesToShow,
     selectedRadio
@@ -92,6 +113,8 @@ export const Results = ({
     ));
   };
 
+  // if recipes array returned from food api is an error message,
+  // render try again screen
   if (typeof recipes[0] === "string") return <TryAgainScreen />;
   return (
     <div className="Results">
@@ -132,6 +155,10 @@ export const Results = ({
         />
       </div>
 
+      {/* ternary condition for 3 conditions:
+          1. If the api fetch for recipes was successful and there are recipes to show, render recipes
+          2. If there are recipes from fetch to api but no recipes to show, then the filters did not get any results so display warning
+          3. Otherwise, no recipes to display since fetch was unsuccessful so return error message */}
       {caloriesFilteredRecipes.length > 0 && recipes.length > 0 ? (
         <>
           <div className="recipe-cards-container">{mapRecipes()}</div>
@@ -145,7 +172,8 @@ export const Results = ({
               />
             )}
             <p className="view-recipe-count">
-              Viewing 1 - {recipesToShow.length} of {recipes.length} recipes
+              Viewing 1 - {caloriesFilteredRecipes.length} of {recipes.length}{" "}
+              recipes
             </p>
           </div>
         </>

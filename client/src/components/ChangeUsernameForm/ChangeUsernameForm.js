@@ -27,6 +27,7 @@ export const ChangeUsernameForm = ({
     if (!newUsername.includes("Successfully")) {
       setUsernameResMessage(newUsername);
     } else {
+      // change usernmae successful, persist username while user logged in
       localStorage.setItem("userName", values.newUsername);
       setUserName(localStorage.getItem("userName"));
       resetForm({ values: "" });
@@ -60,7 +61,7 @@ export const ChangeUsernameForm = ({
                   </div>
                 ) : null}
 
-                {/* Render res sent from backend */}
+                {/* Render response error sent from backend */}
                 {usernameResMessage ? (
                   <div className="main-error-message message error-color">
                     {usernameResMessage}

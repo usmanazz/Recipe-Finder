@@ -26,6 +26,7 @@ export const FilterModal = ({
         <h2 className="modal-title">FILTERS</h2>
       </div>
 
+      {/* render filter modal for mobile devices and save values to state */}
       <div className="mobile-filters">
         <div className="mobile-filter-section border-bottom border-top">
           <h3 className="mobile-filter-title">ALPHABETIC ORDER</h3>

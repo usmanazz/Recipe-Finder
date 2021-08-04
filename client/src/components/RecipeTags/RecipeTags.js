@@ -1,6 +1,7 @@
 import React from "react";
 import "./RecipeTags.css";
 
+// render any diet or cuisine type tags on recipe page
 export const RecipeTags = ({ recipe }) => {
   const { cuisines, diets } = recipe;
 

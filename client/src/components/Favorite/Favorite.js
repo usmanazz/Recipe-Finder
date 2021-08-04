@@ -15,15 +15,16 @@ export const Favorite = ({
 }) => {
   const { title, readyInMinutes, image } = favorite;
 
+  // delete recipe from user's list of favorites
   const handleDelete = () => {
     const newFavList = favoritesList.filter((fav) => fav.id !== favorite.id);
     setFavoritesList(newFavList);
   };
 
   const handleFavDelete = async () => {
-    // user needs to be logged in to favorite/unfavorite
+    // check user is logged in to favorite/unfavorite
     if (isAuthenticated) {
-      // user wants to delete recipe from favorites
+      // user deletes recipe from favorites
       const body = {
         recipeId: favorite.id,
       };

@@ -155,6 +155,7 @@
     width: 1.7rem;
   }
 
+  /* animate links in side bar nav */
   @keyframes navLinkFade {
     from {
       opacity: 0;

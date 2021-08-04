@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import accountLogo from "./outline_person_outline_black_24dp.png";
 import "./NavBar.css";
 
@@ -23,6 +22,7 @@ export const NavBar = ({ isAuthenticated }) => {
     });
   });
 
+  // open or close side bar nav
   const handleNavSlide = () => {
     const burger = document.querySelector(".burger");
     const nav = document.querySelector(".links");
@@ -51,6 +51,7 @@ export const NavBar = ({ isAuthenticated }) => {
     burger.classList.toggle("toggle");
   };
 
+  // close side bar nav when click a link
   const closeSideNav = () => {
     const nav = document.querySelector(".links");
     if (nav.classList.contains("nav-active")) {

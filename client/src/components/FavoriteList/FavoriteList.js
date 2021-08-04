@@ -8,10 +8,12 @@ export const FavoriteList = ({
   favoritesList,
   setFavoritesList,
 }) => {
+  // on initial mount get user's list of favorites with api call
   useEffect(() => {
     async function fetchData() {
       if (isAuthenticated) {
         const favorites = await favoritesApi.getFavorites();
+        // de-stringify recipes
         if (favorites.length !== 0) {
           const parseFavorites = favorites.map((recipe) =>
             JSON.parse(recipe.recipe_info)

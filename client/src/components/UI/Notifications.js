@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 
+// render toastify notifications
 const notifications = {
   success(message, time) {
     toast.success(message, {

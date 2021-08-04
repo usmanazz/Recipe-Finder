@@ -11,13 +11,14 @@ export const AddBar = ({
   setDisableButton,
   setErrors,
 }) => {
-  // saves every change made in input field
+  // save input field state
   const handleTextChange = ({ target }) => {
     setText(target.value);
   };
 
   // validates input from user and adds input to ingredient list
   const handleAdd = () => {
+    // validate input and ensure it is not already in list of ingredients
     if (
       handleValidation() &&
       !ingredients.find((element) => element === text)
@@ -34,7 +35,6 @@ export const AddBar = ({
     let err = {};
     let formIsValid = true;
 
-    // Name
     if (!field) {
       formIsValid = false;
       err["name"] = "Cannot be empty!";
@@ -51,18 +51,16 @@ export const AddBar = ({
     return formIsValid;
   };
 
-  // disables add button when user adds 5 ingredients
+  // disables/enables button based on number of ingredients in list
   useEffect(() => {
     const addButton = document.querySelector(".button.add-btn");
 
     if (ingredients.length === 5) {
       setDisableButton(true);
-
       addButton.classList.toggle("add-btn_hover");
       addButton.classList.toggle("disabled");
     } else {
       setDisableButton(false);
-
       if (!addButton.classList.contains("add-btn_hover")) {
         addButton.classList.toggle("add-btn_hover");
       }

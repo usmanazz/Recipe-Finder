@@ -9,6 +9,7 @@ export const NutritionInfo = ({ recipe }) => {
 
   const onCloseModal = () => setShow(false);
 
+  // render modal for large screen size and render a drop down for smaller screen sizes
   const handleViewInfoClick = () => {
     const viewInfoButton = document.querySelector(".view-info-btn");
     const nutritionDetails = document.querySelector(".nutrition-details");

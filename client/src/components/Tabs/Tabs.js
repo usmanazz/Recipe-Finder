@@ -12,10 +12,15 @@ export const Tabs = ({
   setUserName,
 }) => {
   const [toggleState, setToggleState] = useState(1);
+
+  // initalize error states for change username/password here
+  // to reset forms when user leaves account details tab
   const [renderUsernameError, setRenderUsernameError] = useState(false);
   const [usernameResMessage, setUsernameResMessage] = useState("");
   const [renderPasswordError, setRenderPasswordError] = useState(false);
   const [passwordResMessage, setPasswordResMessage] = useState("");
+
+  // reference each formik form to reset input fields when visit favorities tab
   const usernameFormikRef = useRef();
   const passwordFormikRef = useRef();
 
@@ -67,6 +72,7 @@ export const Tabs = ({
             toggleState === 1 ? "content active-content-tab2" : "content"
           }
         >
+          {/* render number of recipes user favorited */}
           {favoritesList.length !== 0 && (
             <h2 className="favorites-count">
               {favoritesList.length} Favorites

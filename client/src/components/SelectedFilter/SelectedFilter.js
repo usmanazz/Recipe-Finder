@@ -20,10 +20,12 @@ export const SelectedFilter = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // on user click, remove selected filter
   const handleRemoveFilter = (setter, value) => {
     setter(value);
   };
 
+  // removes all applied filters
   const handleClearAll = () => {
     setSelectedRadio("");
     setCookTime([0, 200]);
@@ -31,6 +33,7 @@ export const SelectedFilter = ({
     setCalories([0, 2000]);
   };
 
+  // set state to dynamically render message on results page
   const handleSelectedFilterDisplayed = () => {
     if (
       selectedRadio !== "" ||
@@ -47,6 +50,7 @@ export const SelectedFilter = ({
     }
   };
 
+  // only display selected filters if user applied any filters
   if (
     selectedRadio !== "" ||
     cookTime[0] !== 0 ||

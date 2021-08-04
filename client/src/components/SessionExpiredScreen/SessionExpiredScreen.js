@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./SessionExpiredScreen.css";
 
+// display page when user refreshes recipe page
 export const SessionExpiredScreen = () => {
   return (
     <div className="SessionExpiredScreen">

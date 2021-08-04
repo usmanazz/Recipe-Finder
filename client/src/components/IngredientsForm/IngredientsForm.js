@@ -18,7 +18,9 @@ export const IngredientsForm = ({
   setErrors,
   setRecipes,
 }) => {
+  // make call to food api to get recipes
   const handleSubmit = () => {
+    // track promise serves as wrapper to trigger loading screen when fetching data
     trackPromise(
       Spoonacular.searchRecipes(ingredients).then((recipes) => {
         sessionStorage.setItem("recipes", JSON.stringify(recipes));
@@ -28,8 +30,8 @@ export const IngredientsForm = ({
     );
   };
 
+  // Only display Submit button if at least one ingredient in list
   useEffect(() => {
-    // Only display Submit button if at least one ingredient in list
     if (ingredients.length !== 0) {
       document.querySelector(".findrecipes-btn").style.display = "block";
     } else {

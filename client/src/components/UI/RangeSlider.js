@@ -13,8 +13,11 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
+// Custom slider component from material ui
 export default function RangeSlider({ value, setValue, unit, min, max, step }) {
   const classes = useStyles();
+
+  // set value to user's selected range
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

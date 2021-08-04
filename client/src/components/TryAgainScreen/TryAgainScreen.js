@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./TryAgainScreen.css";
 
+// Screen to display when error occurs fetching data from food api
 export const TryAgainScreen = () => {
   return (
     <div className="TryAgainScreen">

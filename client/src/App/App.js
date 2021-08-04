@@ -28,11 +28,9 @@ function App() {
   const [text, setText] = useState("");
   const [disableButton, setDisableButton] = useState(false);
   const [errors, setErrors] = useState({});
-
   const [recipes, setRecipes] = useState([]);
   const [recipesToShow, setRecipesToShow] = useState([]);
   const [next, setNext] = useState(2);
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [count, setCount] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
@@ -41,10 +39,12 @@ function App() {
   // represents 10 min to frequently check if user is auth
   const MINUTE_MS = 60000 * 10;
 
+  // set auth depending on whether user is logged in/out
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
 
+  // verify user is authenticated
   const checkUserIsAuthenticated = async () => {
     const userLoggedIn = await authApi.isUserAuth();
 
@@ -52,6 +52,7 @@ function App() {
     userLoggedIn === true ? setAuth(true) : setAuth(false);
   };
 
+  // 2 useEffects to check user auth every 10 minutes
   useEffect(() => {
     checkUserIsAuthenticated();
 
@@ -63,8 +64,8 @@ function App() {
       checkUserIsAuthenticated();
     }, MINUTE_MS);
 
-    // This represents the unmount function, in which you need to clear
-    // your interval to prevent memory leaks.
+    // This represents the unmount function, to clear
+    // interval to prevent memory leaks.
     return () => clearInterval(interval);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,8 +77,10 @@ function App() {
         <NavBar isAuthenticated={isAuthenticated} />
         <LoadingScreen />
         <div>
+          {/* start at top of page on initial mount */}
           <ScrollToTop />
           <Switch>
+            {/* Home Page */}
             <Route exact path="/">
               <Home
                 ingredients={ingredients}
@@ -94,9 +97,13 @@ function App() {
                 setCount={setCount}
               />
             </Route>
+
+            {/* About Page */}
             <Route path="/about">
               <About />
             </Route>
+
+            {/* Search Results Page */}
             <Route path="/results">
               <Results
                 ingredients={ingredients}
@@ -113,6 +120,8 @@ function App() {
                 setSelectedFilterDisplayed={setSelectedFilterDisplayed}
               />
             </Route>
+
+            {/* Recipe Page */}
             <Route path="/recipe/:id">
               <Recipe
                 recipes={recipes}
@@ -124,6 +133,8 @@ function App() {
                 setFavoritesList={setFavoritesList}
               />
             </Route>
+
+            {/* Account Page */}
             <Route
               exact
               path="/account"
@@ -141,6 +152,8 @@ function App() {
                 )
               }
             ></Route>
+
+            {/* Login Page */}
             <Route
               path="/login"
               render={(props) =>
@@ -151,6 +164,8 @@ function App() {
                 )
               }
             ></Route>
+
+            {/* Signup Page */}
             <Route
               path="/signup"
               render={(props) =>
@@ -166,6 +181,8 @@ function App() {
             <Route exact component={NotFoundPage} />
           </Switch>
         </div>
+
+        {/* Footer Section */}
         <div className="footer">
           <h3>Designed and built by Usman Naz, © 2021</h3>
         </div>

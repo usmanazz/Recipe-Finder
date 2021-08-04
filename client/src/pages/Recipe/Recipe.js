@@ -32,13 +32,14 @@ export const Recipe = ({
   const recipe = userFavRecipe ? userFavRecipe : resultsRecipe;
   const [renderFavButton, setRenderFavButton] = useState(false);
 
+  // if user unfavorites recipe, remove it from user's list of favs
   const handleDelete = () => {
     const newFavList = favoritesList.filter((fav) => fav.id !== recipe.id);
     setFavoritesList(newFavList);
   };
 
+  // to ensure reset when visit homepage
   useEffect(() => {
-    // to ensure reset when visit homepage
     setCount((prev) => prev + 1);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,6 +67,7 @@ export const Recipe = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // either favorite or unfavorite recipe if the user is logged in
   const handleFavClick = async () => {
     // user needs to be logged in to favorite/unfavorite
     if (isAuthenticated) {
@@ -95,6 +97,7 @@ export const Recipe = ({
     }
   };
 
+  // can't persist recipe page so render session expired screen
   if (!recipe) {
     return <SessionExpiredScreen />;
   }
@@ -128,6 +131,8 @@ export const Recipe = ({
           <img src={recipe.image} alt={`${recipe.title}`} />
         </div>
 
+        {/* render list of ingredients */}
+        {/* if no ingredients from fetched data, then provide link to original web page */}
         <div className="ingredients-container same-margin">
           <h3 className="ingredients-title">Ingredients</h3>
           <div className="scroll-container">
@@ -149,6 +154,7 @@ export const Recipe = ({
           </div>
         </div>
 
+        {/* similar to displaying ingredients */}
         <div className="instructions-container same-margin">
           <h3 className="instructions-title">Instructions</h3>
           {recipe.analyzedInstructions.length > 0 ? (

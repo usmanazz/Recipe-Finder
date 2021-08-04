@@ -18,6 +18,7 @@ export const ChangePasswordForm = ({
     newPassword: "",
   };
 
+  // On submit, make api call to check if new password is valid
   const onSubmit = async (values, { resetForm }) => {
     const newPassword = await updateAuthApi.changePassword(values);
 
@@ -54,13 +55,14 @@ export const ChangePasswordForm = ({
               <div>
                 <h3 className="change-username-title">Change Password</h3>
 
+                {/* render client side validation error */}
                 {renderPasswordError ? (
                   <div className="main-error-message message error-color">
                     Please fill out all of the fields
                   </div>
                 ) : null}
 
-                {/* Render res sent from backend */}
+                {/* Render response error sent from backend */}
                 {passwordResMessage ? (
                   <div className="main-error-message message error-color">
                     {passwordResMessage}
@@ -75,6 +77,7 @@ export const ChangePasswordForm = ({
                       id="currentPassword"
                       name="currentPassword"
                     >
+                      {/* formik notation to render border style for errors */}
                       {({ field, meta: { touched, error } }) => (
                         <input
                           className={touched && error ? "invalid" : ""}
@@ -112,9 +115,11 @@ export const ChangePasswordForm = ({
                     type="submit"
                     className="button create-account-btn"
                     onClick={() => {
+                      // client side error handling
                       !formik.isValid || !currentPassword || !newPassword
                         ? setRenderPasswordError(true)
                         : setRenderPasswordError(false);
+                      // do not display error from api response if we have client side errors
                       setPasswordResMessage("");
                     }}
                   >
