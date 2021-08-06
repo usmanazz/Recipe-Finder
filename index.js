@@ -2,10 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const jwtAuthRouter = require("./routes/jwtAuth");
 const dashboardRouter = require("./routes/dashboard");
-
 const app = express();
-
 const PORT = process.env.PORT || 5000;
+
+if (process.env.NODE_ENV === "production") {
+  // serve static content
+  app.use(express.static("./client/build"));
+}
 
 // middleware
 app.use(cors());
@@ -21,5 +24,5 @@ app.use("/auth", jwtAuthRouter);
 app.use("/dashboard", dashboardRouter);
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running at ${PORT}`);
 });

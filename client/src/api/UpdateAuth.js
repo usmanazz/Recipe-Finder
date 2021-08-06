@@ -1,17 +1,14 @@
 const updateAuthApi = {
   async changeUsername(values) {
     try {
-      const response = await fetch(
-        "http://localhost:5000/dashboard/change-username",
-        {
-          method: "POST",
-          headers: {
-            token: localStorage.token,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }
-      );
+      const response = await fetch("/dashboard/change-username", {
+        method: "POST",
+        headers: {
+          token: localStorage.token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
       const parseRes = await response.json();
       return parseRes;
@@ -22,17 +19,14 @@ const updateAuthApi = {
 
   async changePassword(values) {
     try {
-      const response = await fetch(
-        "http://localhost:5000/dashboard/change-password",
-        {
-          method: "POST",
-          headers: {
-            token: localStorage.token,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }
-      );
+      const response = await fetch("/dashboard/change-password", {
+        method: "POST",
+        headers: {
+          token: localStorage.token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
       const parseRes = await response.json();
       return parseRes;

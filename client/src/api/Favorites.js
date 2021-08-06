@@ -1,16 +1,13 @@
 const favoritesApi = {
   async getFavorites() {
     try {
-      const response = await fetch(
-        "http://localhost:5000/dashboard/get-favorites",
-        {
-          method: "GET",
-          headers: {
-            token: localStorage.token,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch("/dashboard/get-favorites", {
+        method: "GET",
+        headers: {
+          token: localStorage.token,
+          "Content-Type": "application/json",
+        },
+      });
 
       const parseRes = await response.json();
       return parseRes;
@@ -21,7 +18,7 @@ const favoritesApi = {
 
   async removeRecipeFromFavorites(body) {
     try {
-      await fetch("http://localhost:5000/dashboard/remove-favorite", {
+      await fetch("/dashboard/remove-favorite", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +33,7 @@ const favoritesApi = {
 
   async addRecipeToFavorites(body) {
     try {
-      await fetch("http://localhost:5000/dashboard/add-favorite", {
+      await fetch("/dashboard/add-favorite", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
