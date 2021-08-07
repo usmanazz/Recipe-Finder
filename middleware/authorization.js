@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
     }
 
     // 2. check if token is valid
-    const payload = jwt.verify(jwtToken, process.env.jwtSecret);
+    const payload = jwt.verify(jwtToken, `${process.env.jwtSecret}`);
 
     // 3. use payload in our routes
     req.user = payload.user;
