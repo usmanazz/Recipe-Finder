@@ -12,7 +12,7 @@ let Spoonacular = {
             .join("");
 
     return fetch(
-      `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${ingredientParam}&number=1&ignorePantry=true&ranking=1`,
+      `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${ingredientParam}&number=6&ignorePantry=true&ranking=1`,
       {
         method: "GET",
         headers: {
