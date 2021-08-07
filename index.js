@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
+const app = express();
+const path = require("path");
 const jwtAuthRouter = require("./routes/jwtAuth");
 const dashboardRouter = require("./routes/dashboard");
-const app = express();
 const PORT = process.env.PORT || 5000;
 
 if (process.env.NODE_ENV === "production") {
@@ -22,6 +23,12 @@ app.use(
 // routes
 app.use("/auth", jwtAuthRouter);
 app.use("/dashboard", dashboardRouter);
+
+if (process.env.NODE_ENV === "production") {
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server running at ${PORT}`);
