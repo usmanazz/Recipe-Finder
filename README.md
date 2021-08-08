@@ -38,7 +38,7 @@ Deployed on Heroku: https://recipe-finder-unaz.herokuapp.com/
       <ul>
         <li><a href="#motivation">Motivation</a></li>
         <li><a href="#built-with">Built With</a></li>
-        <li><a href="#additional-technologies/libararies-used">Additional Technologies/Libraries Used</a></li>
+        <li><a href="#additional-technologies/libraries-used">Additional Technologies/Libraries Used</a></li>
       </ul>
     </li>
     <li>
