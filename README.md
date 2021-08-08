@@ -1,4 +1,3 @@
-<!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
 *** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
@@ -37,7 +36,9 @@ Deployed on Heroku: https://recipe-finder-unaz.herokuapp.com/
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#motivation">Motivation</a></li>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#additional-technologies/libararies-used">Additional Technologies/Libraries Used</a></li>
       </ul>
     </li>
     <li>
@@ -58,7 +59,7 @@ Deployed on Heroku: https://recipe-finder-unaz.herokuapp.com/
 
 ## About The Project
 
-### The Motivation
+### Motivation
 
 I love cooking. I have been cooking and trying out different recipes and cuisines since I was in elementary school. Since I am from a
 traditional South Asian household, my mom cooks primary traditional desi foods. I always enjoyed other cuisines be it Chinese, Mexican,
