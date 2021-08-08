@@ -78,7 +78,7 @@ In addition, it was an opportunity to learn full stack web development using PER
 - [Node.js](https://nodejs.org/en/)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
-### Additional Technologies/Libraries used:
+### Additional Technologies/Libraries Used:
 
 - [Heroku](https://www.heroku.com/)
 - [Formik](https://formik.org/)
