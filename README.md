@@ -38,7 +38,7 @@ Deployed on Heroku: https://recipe-finder-unaz.herokuapp.com/
       <ul>
         <li><a href="#motivation">Motivation</a></li>
         <li><a href="#built-with">Built With</a></li>
-        <li><a href="#additional-technologies/libraries-used">Additional Technologies/Libraries Used</a></li>
+        <li><a href="#additional-technologies-used">Additional Technologies Used</a></li>
       </ul>
     </li>
     <li>
@@ -78,7 +78,7 @@ In addition, it was an opportunity to learn full stack web development using PER
 - [Node.js](https://nodejs.org/en/)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
-### Additional Technologies/Libraries Used:
+### Additional Technologies Used:
 
 - [Heroku](https://www.heroku.com/)
 - [Formik](https://formik.org/)
