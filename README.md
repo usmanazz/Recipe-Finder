@@ -13,6 +13,7 @@
     4. About the Project
         - motivation
         - technologies used
+        - Design
     5. Getting started
         - prereqs
         - installation
@@ -37,6 +38,7 @@ Deployed on Heroku: https://recipe-finder-unaz.herokuapp.com/
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#motivation">Motivation</a></li>
+        <li><a href="#design">Design</a></li>
         <li><a href="#built-with">Built With</a></li>
         <li><a href="#additional-technologies-used">Additional Technologies Used</a></li>
       </ul>
@@ -70,6 +72,10 @@ My goal was to create an app that can make these recipes easily accessible by se
 
 In addition, it was an opportunity to learn full stack web development using PERN stack and gain meaningful experience working with popular technologies.
 
+### Design
+
+Designed mockups for both desktop and mobile versions of web app on Figma. [Click here](https://www.figma.com/file/k3iBzpR3W6rNquxtG1Tltu/Recipe-Finder?node-id=0%3A1) to view mockups.
+
 ### Built With
 
 - [PostgreSQL](https://www.postgresql.org/)
@@ -84,6 +90,7 @@ In addition, it was an opportunity to learn full stack web development using PER
 - [Formik](https://formik.org/)
 - [Yup](https://github.com/jquense/yup)
 - [Material-UI](https://material-ui.com/)
+- [Figma](https://www.figma.com/)
 
 Utilized the [Spoonacular Foof API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition) to get recipe data.
 
