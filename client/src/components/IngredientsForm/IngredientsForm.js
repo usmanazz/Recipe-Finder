@@ -18,7 +18,6 @@ export const IngredientsForm = ({
   setErrors,
   setRecipes,
 }) => {
-  // make call to food api to get recipes
   const handleSubmit = () => {
     // track promise serves as wrapper to trigger loading screen when fetching data
     trackPromise(

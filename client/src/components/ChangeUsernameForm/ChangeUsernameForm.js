@@ -27,7 +27,7 @@ export const ChangeUsernameForm = ({
     if (!newUsername.includes("Successfully")) {
       setUsernameResMessage(newUsername);
     } else {
-      // change usernmae successful, persist username while user logged in
+      // change username successful, persist username while user logged in
       localStorage.setItem("userName", values.newUsername);
       setUserName(localStorage.getItem("userName"));
       resetForm({ values: "" });

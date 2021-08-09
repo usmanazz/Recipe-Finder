@@ -19,11 +19,9 @@ export const Home = ({
 }) => {
   // reset website content when revisiting home page
   useEffect(() => {
-    // reset localStorage
     sessionStorage.removeItem("recipes");
     sessionStorage.removeItem("ingredients");
 
-    // reset ingredients form when revisit Home page
     setIngredients([]);
     if (count > 1) {
       window.location = "/";

@@ -38,7 +38,6 @@ export const Filters = ({
     setShow(true);
   };
 
-  // set state for selected radio button
   const handleRadioChange = (event) => {
     setSelectedRadio(event.target.value);
   };
@@ -49,11 +48,9 @@ export const Filters = ({
     window.addEventListener("resize", handleCloseFilter);
   }, []);
 
-  // close filter if resize window less than 1024px
   const handleCloseFilter = () => {
     // checks if current page is results page
     if (window.location.href.indexOf("results") > -1) {
-      // grab filters buttons
       const alphaOrderButton = document.querySelector(
         ".button.alpha-order-btn"
       );
@@ -154,7 +151,6 @@ export const Filters = ({
         iconRight={filterIcon}
       />
 
-      {/* display filter modal for smaller screen sizes */}
       <FilterModal
         show={show}
         setShow={setShow}

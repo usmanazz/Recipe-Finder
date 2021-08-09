@@ -36,29 +36,24 @@ function App() {
   const [favoritesList, setFavoritesList] = useState([]);
   const [selectedFilterDisplayed, setSelectedFilterDisplayed] = useState(false);
 
-  // represents 10 min to frequently check if user is auth
   const MINUTE_MS = 60000 * 10;
 
-  // set auth depending on whether user is logged in/out
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
 
-  // verify user is authenticated
   const checkUserIsAuthenticated = async () => {
     const userLoggedIn = await authApi.isUserAuth();
-
-    // set Authenticated to true for user to stay logged in on refresh
     userLoggedIn === true ? setAuth(true) : setAuth(false);
   };
 
-  // 2 useEffects to check user auth every 10 minutes
   useEffect(() => {
     checkUserIsAuthenticated();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // check user auth every 10 min
   useEffect(() => {
     const interval = setInterval(() => {
       checkUserIsAuthenticated();
@@ -80,7 +75,6 @@ function App() {
           {/* start at top of page on initial mount */}
           <ScrollToTop />
           <Switch>
-            {/* Home Page */}
             <Route exact path="/">
               <Home
                 ingredients={ingredients}
@@ -98,12 +92,10 @@ function App() {
               />
             </Route>
 
-            {/* About Page */}
             <Route path="/about">
               <About />
             </Route>
 
-            {/* Search Results Page */}
             <Route path="/results">
               <Results
                 ingredients={ingredients}
@@ -121,7 +113,6 @@ function App() {
               />
             </Route>
 
-            {/* Recipe Page */}
             <Route path="/recipe/:id">
               <Recipe
                 recipes={recipes}
@@ -134,7 +125,6 @@ function App() {
               />
             </Route>
 
-            {/* Account Page */}
             <Route
               exact
               path="/account"
@@ -153,7 +143,6 @@ function App() {
               }
             ></Route>
 
-            {/* Login Page */}
             <Route
               path="/login"
               render={(props) =>
@@ -165,7 +154,6 @@ function App() {
               }
             ></Route>
 
-            {/* Signup Page */}
             <Route
               path="/signup"
               render={(props) =>
@@ -182,7 +170,6 @@ function App() {
           </Switch>
         </div>
 
-        {/* Footer Section */}
         <div className="footer">
           <h3>Designed and built by Usman Naz, © 2021</h3>
         </div>

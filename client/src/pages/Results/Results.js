@@ -69,8 +69,6 @@ export const Results = ({
     setRecipesToShow((prev) => [...prev, ...slicedRecipes]);
   };
 
-  // When user clicks to render more recipes, display more recipes and
-  // increment next for future pages
   const handleLoadMoreRecipes = () => {
     addMoreRecipesToShow(next, next + recipesPerPage);
     setNext(next + recipesPerPage);

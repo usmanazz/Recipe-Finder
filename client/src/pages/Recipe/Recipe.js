@@ -32,7 +32,6 @@ export const Recipe = ({
   const recipe = userFavRecipe ? userFavRecipe : resultsRecipe;
   const [renderFavButton, setRenderFavButton] = useState(false);
 
-  // if user unfavorites recipe, remove it from user's list of favs
   const handleDelete = () => {
     const newFavList = favoritesList.filter((fav) => fav.id !== recipe.id);
     setFavoritesList(newFavList);
@@ -69,9 +68,7 @@ export const Recipe = ({
 
   // either favorite or unfavorite recipe if the user is logged in
   const handleFavClick = async () => {
-    // user needs to be logged in to favorite/unfavorite
     if (isAuthenticated) {
-      // user wants to favorite recipe
       if (!renderFavButton) {
         const body = {
           recipeId: recipe.id,
@@ -80,9 +77,7 @@ export const Recipe = ({
         await favoritesApi.addRecipeToFavorites(body);
         setRenderFavButton(true);
         notifications.success("Added to Favorites!", 2000);
-      }
-      // user wants to unfavorite recipe
-      else if (renderFavButton) {
+      } else if (renderFavButton) {
         const body = {
           recipeId: recipe.id,
         };

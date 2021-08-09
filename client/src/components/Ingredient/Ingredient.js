@@ -8,7 +8,6 @@ export const Ingredient = ({
   ingredients,
   setIngredients,
 }) => {
-  // remove ingredient from ingredient form
   const handleDelete = () => {
     setIngredients(ingredients.filter((_, id) => id !== index));
   };

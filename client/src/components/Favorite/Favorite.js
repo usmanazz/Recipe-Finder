@@ -15,22 +15,18 @@ export const Favorite = ({
 }) => {
   const { title, readyInMinutes, image } = favorite;
 
-  // delete recipe from user's list of favorites
   const handleDelete = () => {
     const newFavList = favoritesList.filter((fav) => fav.id !== favorite.id);
     setFavoritesList(newFavList);
   };
 
   const handleFavDelete = async () => {
-    // check user is logged in to favorite/unfavorite
     if (isAuthenticated) {
-      // user deletes recipe from favorites
       const body = {
         recipeId: favorite.id,
       };
       await favoritesApi.removeRecipeFromFavorites(body);
 
-      // removes recipe from the displayed list
       handleDelete();
       notifications.success("Removed from Favorites!", 2000);
     }

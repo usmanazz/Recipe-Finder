@@ -20,12 +20,10 @@ export const SelectedFilter = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // on user click, remove selected filter
   const handleRemoveFilter = (setter, value) => {
     setter(value);
   };
 
-  // removes all applied filters
   const handleClearAll = () => {
     setSelectedRadio("");
     setCookTime([0, 200]);

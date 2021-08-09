@@ -11,14 +11,11 @@ export const AddBar = ({
   setDisableButton,
   setErrors,
 }) => {
-  // save input field state
   const handleTextChange = ({ target }) => {
     setText(target.value);
   };
 
-  // validates input from user and adds input to ingredient list
   const handleAdd = () => {
-    // validate input and ensure it is not already in list of ingredients
     if (
       handleValidation() &&
       !ingredients.find((element) => element === text)

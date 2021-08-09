@@ -13,7 +13,7 @@ export const NavBar = ({ isAuthenticated }) => {
         handleNavSlide();
       }
 
-      // prevent side nav animation from happening on browser resize
+      // prevent side nav animation from occuring on browser resize
       document.body.classList.add("resize-animation-stopper");
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
@@ -28,7 +28,6 @@ export const NavBar = ({ isAuthenticated }) => {
     const nav = document.querySelector(".links");
     const navLinks = document.querySelectorAll(".links a");
 
-    // Toggle Nav
     nav.classList.toggle("nav-active");
 
     // add box shadow to side-nav when displayed
