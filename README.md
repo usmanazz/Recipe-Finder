@@ -23,17 +23,17 @@
     8. License
 
  -->
- 
- 
+
  <!-- PROJECT LOGO -->
 
 <br />
 <p align="center">
   <img src="./images/food-spoon-fork-logo.jpeg" alt="Logo" width="80" height="80">
-  <h1 align="center">Recipe Finder</h1>
+  <h2 align="center">Recipe Finder</h2>
 
   <p align="center">
     An awesome web application to quickly find recipes based off available ingredients you have at home!
+    <br />
     <br />
   </p>
 </p>
