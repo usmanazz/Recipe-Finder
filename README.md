@@ -33,6 +33,7 @@
 
   <p align="center">
     An awesome web application to quickly find recipes based off available ingredients you have at home!
+    <br />
     <a href="https://recipe-finder-unaz.herokuapp.com/"><strong>Explore the application »</strong></a>
     <br />
     <br />
@@ -64,7 +65,6 @@
     <li><a href="#roadmap-for-future">Roadmap For Future</a></li>
     <li><a href="#license">License</a></li>
   </ol>
-  <br />
 </details>
 
 <!-- ABOUT THE PROJECT -->
