@@ -28,20 +28,16 @@
 
 <br />
 <p align="center">
-  <img src="./images/food-spoon-fork-logo.jpeg" alt="Logo" width="80" height="80">
+  <img src="./images/food-spoon-fork-logo.jpeg" alt="Logo" width="100" height="100">
   <h2 align="center">Recipe Finder</h2>
 
   <p align="center">
     An awesome web application to quickly find recipes based off available ingredients you have at home!
+    <a href="https://recipe-finder-unaz.herokuapp.com/"><strong>Explore the application »</strong></a>
     <br />
     <br />
   </p>
 </p>
-
-<!-- PROJECT TITLE -->
-<!-- # Recipe Finder -->
-
-Deployed on Heroku: https://recipe-finder-unaz.herokuapp.com/
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -68,6 +64,7 @@ Deployed on Heroku: https://recipe-finder-unaz.herokuapp.com/
     <li><a href="#roadmap-for-future">Roadmap For Future</a></li>
     <li><a href="#license">License</a></li>
   </ol>
+  <br />
 </details>
 
 <!-- ABOUT THE PROJECT -->
