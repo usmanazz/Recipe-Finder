@@ -29,7 +29,7 @@
 <br />
 <p align="center">
   <img src="./images/food-spoon-fork-logo.jpeg" alt="Logo" width="100" height="100">
-  <h2 align="center">Recipe Finder</h2>
+  <h1 align="center">Recipe Finder</h1>
 
   <p align="center">
     An awesome web application to quickly find recipes based off available ingredients you have at home!
